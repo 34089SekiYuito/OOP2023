@@ -15,6 +15,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void btButton_Click(object sender, EventArgs e) {
+
             //int sum = int.Parse(tbNum1.Text) + int.Parse(tbNum2.Text);
             //tbAns.Text = sum.ToString() ;
 
