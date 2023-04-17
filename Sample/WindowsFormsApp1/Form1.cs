@@ -26,6 +26,12 @@ namespace WindowsFormsApp1 {
 
         }
 
-
+        //イベントハンドラ
+        private void btPow_Click(object sender, EventArgs e) {
+            //XのY乗を計算
+            double ans = Math.Pow((double)nudX.Value, (double)nudY.Value);
+            //結果を出力
+            tbResult.Text = ans.ToString();
+        }
     }
 }
