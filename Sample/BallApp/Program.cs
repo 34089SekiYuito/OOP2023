@@ -12,11 +12,11 @@ namespace BallApp {
         private Timer moveTimer;    //タイマー用
         private SoccerBall soccerBall;  //ボール
         private PictureBox pb;  //画像を表示するコントロール
+        private List<SoccerBall> balls = new List<SoccerBall>();    //ballを格納するList
+        private List<PictureBox> pbs = new List<PictureBox>();    //画面に表示するpbを格納するList
 
         static void Main(string[] args) {
-
             Application.Run(new Program());
-
         }
 
         //ctor コンストラクタの自動生成
@@ -52,12 +52,18 @@ namespace BallApp {
             pb.Parent = this;   //Formを継承している自分(this)を親に設定する
             moveTimer.Start();  //タイマースタート
 
+            balls.Add(soccerBall);
+            pbs.Add(pb);
+
         }
 
         //タイマータイムアウト時のイベントハンドラ
         private void MoveTimer_Tick(object sender, EventArgs e) {
-            soccerBall.Move(this, pb);  //移動のメッセージを送る
-            pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);
+            for (int i = 0; i < balls.Count; i++)
+            {
+                balls[i].Move(this, pb);  //移動のメッセージを送る
+                pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
+            }
         }
     }
 }
