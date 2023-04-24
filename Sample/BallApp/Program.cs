@@ -15,6 +15,7 @@ namespace BallApp {
         private List<SoccerBall> balls = new List<SoccerBall>();    //ballを格納するList
         private List<PictureBox> pbs = new List<PictureBox>();    //画面に表示するpbを格納するList
 
+
         static void Main(string[] args) {
             Application.Run(new Program());
         }
@@ -55,6 +56,8 @@ namespace BallApp {
             balls.Add(soccerBall);
             pbs.Add(pb);
 
+            //Textにボールの数を表示
+            Text = "BallGame:" + balls.Count;
         }
 
         //タイマータイムアウト時のイベントハンドラ
