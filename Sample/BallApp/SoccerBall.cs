@@ -11,7 +11,7 @@ namespace BallApp {
         public static int Count { get => count; set => count = value; }
 
         //コンストラクタ
-        public SoccerBall(double Xp, double Yp) : base(Xp - 25, Yp - 25, @"pic\soccer_ball.png") {
+        public SoccerBall(double Xp, double Yp) : base(Xp, Yp, @"pic\soccer_ball.png") {
             Count++;
         }
 
