@@ -58,6 +58,7 @@ namespace BallApp {
 
             //Textにボールの数を表示
             Text = "BallGame:" + balls.Count;
+            
         }
 
         //タイマータイムアウト時のイベントハンドラ
