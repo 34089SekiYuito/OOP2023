@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BallApp {
-    class SoccerBall : Obj {
+    class TennisBall : Obj {
 
         //フィールド
         private static int count;   //ballの個数
@@ -11,7 +10,7 @@ namespace BallApp {
         public static int Count { get => count; set => count = value; }
 
         //コンストラクタ
-        public SoccerBall(double Xp, double Yp) : base(Xp - 25, Yp - 25, @"pic\soccer_ball.png") {
+        public TennisBall(double Xp, double Yp) : base(Xp - 12.5, Yp - 12.5, @"pic\tennis_ball.png") {
             Count++;
         }
 

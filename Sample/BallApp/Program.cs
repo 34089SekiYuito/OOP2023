@@ -10,10 +10,10 @@ namespace BallApp {
     class Program : Form {
 
         private Timer moveTimer;    //タイマー用
-        private SoccerBall soccerBall;  //ボール
         private PictureBox pb;  //画像を表示するコントロール
-        private List<SoccerBall> balls = new List<SoccerBall>();    //ballを格納するList
+        private List<Obj> balls = new List<Obj>();    //ballを格納するList
         private List<PictureBox> pbs = new List<PictureBox>();    //画面に表示するpbを格納するList
+        Obj obj;
 
 
         static void Main(string[] args) {
@@ -42,23 +42,35 @@ namespace BallApp {
         private void Program_MouseClick(object sender, MouseEventArgs e) {
 
             //ボールインスタンス生成
-            soccerBall = new SoccerBall(e.X, e.Y);
-            pb = new PictureBox();   //画像を表示するコントロール
-            pb.Image = soccerBall.Image;
-            pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);
-            pb.Size = new Size(50, 50); //画像の表示サイズ
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
+            BallCre(e);
 
             //画像の登録
             pb.Parent = this;   //Formを継承している自分(this)を親に設定する
             moveTimer.Start();  //タイマースタート
-
-            balls.Add(soccerBall);
             pbs.Add(pb);
 
             //Textにボールの数を表示
             Text = "BallGame:" + balls.Count;
-            
+
+        }
+
+        //ボールを作成し表示する準備をするメゾット
+        private void BallCre(MouseEventArgs e) {
+            pb = new PictureBox();   //画像を表示するコントロール
+            if (e.Button == MouseButtons.Left)
+            {
+                obj = new SoccerBall(e.X, e.Y);
+                pb.Size = new Size(50, 50); //画像の表示サイズ
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                obj = new TennisBall(e.X, e.Y);
+                pb.Size = new Size(25, 25); //画像の表示サイズ
+            }
+            pb.Image = obj.Image;
+            pb.Location = new Point((int)obj.PosX, (int)obj.PosY);
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
+            balls.Add(obj);
         }
 
         //タイマータイムアウト時のイベントハンドラ
