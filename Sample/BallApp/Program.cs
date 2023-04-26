@@ -14,7 +14,7 @@ namespace BallApp {
         private List<Obj> balls = new List<Obj>();    //ballを格納するList
         private List<PictureBox> pbs = new List<PictureBox>();    //画面に表示するpbを格納するList
         private Obj ballObj;    //ボールのインスタンス格納用
-        private Bar bar;
+        private Bar bar;    //Barのインスタンス
         private PictureBox pbBar = new PictureBox();   //画像を表示するコントロール
 
         static void Main(string[] args) {
@@ -50,15 +50,7 @@ namespace BallApp {
 
         //キーが押された時のイベントハンドラ
         private void Program_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyData == Keys.Left)
-            {
-                bar.MoveX = -30;
-            }
-            else if (e.KeyData == Keys.Right)
-            {
-                bar.MoveX = 30;
-            }
-            bar.Move(this, pbBar);
+            bar.Move(this, pbBar, e);
             pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
         }
 
@@ -95,7 +87,7 @@ namespace BallApp {
         private void MoveTimer_Tick(object sender, EventArgs e) {
             for (int i = 0; i < balls.Count; i++)
             {
-                balls[i].Move(this, pb);  //移動のメッセージを送る
+                balls[i].Move(this, pb, bar);  //移動のメッセージを送る
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
             }
         }

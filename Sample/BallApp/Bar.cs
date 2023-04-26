@@ -15,7 +15,20 @@ namespace BallApp {
         }
 
         //メソッド
-        public override void Move(Form form, PictureBox pb) {
+        public override void Move(Form form, PictureBox pb,Bar bar) {
+            ;
+        }
+
+        //KeyEventArgsを引数に追加したMove(オーバーロード)
+        public void Move(Form form, PictureBox pb, KeyEventArgs e) {
+
+            if(e.KeyData == Keys.Left)
+            {
+                MoveX = -30;
+            }else if(e.KeyData == Keys.Right)
+            {
+                MoveX = 30;
+            }
             if (PosX + MoveX < 0)
             {
                 PosX = 0;

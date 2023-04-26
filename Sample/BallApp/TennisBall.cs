@@ -15,12 +15,12 @@ namespace BallApp {
         }
 
         //メソッド
-        public override void Move(Form form, PictureBox pb) {
+        public override void Move(Form form, PictureBox pb, Bar bar) {
             if (PosX > (form.Width - pb.Width) || PosX < 0)
             {
                 MoveX = -(MoveX);
             }
-            if (PosY > (form.Height - pb.Height) || PosY < 0)
+            if (PosY > (form.Height - pb.Height) || PosY < 0 || ((PosX >= bar.PosX && PosX < bar.PosX + 150) && PosY >= bar.PosY - 40))
             {
                 MoveY = -(MoveY);
             }

@@ -26,6 +26,7 @@ namespace BallApp {
             PosX = Xp;
             PosY = Yp;
             image = Image.FromFile(Path);
+
             Random rm = new Random();   //乱数インスタンス
             MoveX = returnRan(rm);  //乱数を代入
             MoveY = returnRan(rm);  //乱数を代入
@@ -35,7 +36,7 @@ namespace BallApp {
         }
 
         //Moveの抽象メソッド
-        public abstract void Move(Form form, PictureBox pb);
+        public abstract void Move(Form form, PictureBox pb, Bar bar);
 
 
         //0以外のランダムな値を返すメソッド
