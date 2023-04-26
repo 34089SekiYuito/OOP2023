@@ -14,8 +14,8 @@ namespace BallApp {
         private List<Obj> balls = new List<Obj>();    //ballを格納するList
         private List<PictureBox> pbs = new List<PictureBox>();    //画面に表示するpbを格納するList
         private Obj ballObj;    //ボールのインスタンス格納用
-        Bar bar;
-        PictureBox pbBar = new PictureBox();   //画像を表示するコントロール
+        private Bar bar;
+        private PictureBox pbBar = new PictureBox();   //画像を表示するコントロール
 
         static void Main(string[] args) {
             Application.Run(new Program());
@@ -34,10 +34,10 @@ namespace BallApp {
             this.KeyDown += Program_KeyDown;
 
             //barインスタンスの作成（仮）
-            bar = new Bar(Width / 2, Height - 150);
+            bar = new Bar(320, 480);
             pbBar.Image = bar.Image;
-            pbBar.Size = new Size(150, 30); //画像の表示サイズ
-            pbBar.Location = new Point(Width / 2, Height - 150);
+            pbBar.Size = new Size(150, 10); //画像の表示サイズ
+            pbBar.Location = new Point(320, 480);
             pbBar.Parent = this;   //Formを継承している自分(this)を親に設定する
             pbBar.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
 
@@ -50,7 +50,15 @@ namespace BallApp {
 
         //キーが押された時のイベントハンドラ
         private void Program_KeyDown(object sender, KeyEventArgs e) {
-            bar.Move(this,pbBar);
+            if (e.KeyData == Keys.Left)
+            {
+                bar.MoveX = -30;
+            }
+            else if (e.KeyData == Keys.Right)
+            {
+                bar.MoveX = 30;
+            }
+            bar.Move(this, pbBar);
             pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
         }
 
