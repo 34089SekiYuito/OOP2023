@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BallApp {
@@ -24,6 +25,24 @@ namespace BallApp {
             if (PosY > (form.Height - pb.Height) || PosY < 0 || ((PosX >= bar.PosX && PosX < bar.PosX + 150) && PosY >= bar.PosY - 40))
             {
                 MoveY = -(MoveY);
+            }
+            PosX += MoveX;
+            PosY += MoveY;
+        }
+
+        //反射させるメソッド
+        public override void Move(PictureBox pbBar, PictureBox pbBall) {
+
+            Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y, pbBar.Width, pbBar.Height);
+            Rectangle rBall = new Rectangle(pbBall.Location.X, pbBall.Location.Y, pbBall.Width, pbBall.Height);
+
+            if (PosY > 520 || PosY < 0 || rBar.IntersectsWith(rBall))
+            {
+                MoveY = -MoveY;
+            }
+            if (PosX > 730 || PosX < 0)
+            {
+                MoveX = -MoveX;
             }
             PosX += MoveX;
             PosY += MoveY;

@@ -38,6 +38,7 @@ namespace BallApp {
         //Moveの抽象メソッド
         public abstract void Move(Form form, PictureBox pb, Bar bar);
 
+        public abstract void Move(PictureBox pbBar, PictureBox pbBall);
 
         //0以外のランダムな値を返すメソッド
         public int returnRan(Random rm) {

@@ -33,7 +33,7 @@ namespace BallApp {
             this.MouseClick += Program_MouseClick;
             this.KeyDown += Program_KeyDown;
 
-            //barインスタンスの作成（仮）
+            //barインスタンスの作成
             bar = new Bar(320, 480);
             pbBar.Image = bar.Image;
             pbBar.Size = new Size(150, 10); //画像の表示サイズ
@@ -87,7 +87,7 @@ namespace BallApp {
         private void MoveTimer_Tick(object sender, EventArgs e) {
             for (int i = 0; i < balls.Count; i++)
             {
-                balls[i].Move(this, pb, bar);  //移動のメッセージを送る
+                balls[i].Move(pbBar, pbs[i]);  //移動のメッセージを送る
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
             }
         }

@@ -18,6 +18,9 @@ namespace BallApp {
         public override void Move(Form form, PictureBox pb,Bar bar) {
             ;
         }
+        public override void Move(PictureBox pbBar, PictureBox pbBall) {
+            ;
+        }
 
         //KeyEventArgsを引数に追加したMove(オーバーロード)
         public void Move(Form form, PictureBox pb, KeyEventArgs e) {
@@ -42,6 +45,8 @@ namespace BallApp {
                 PosX += MoveX;
             }
         }
+
+     
     }
 }
 
