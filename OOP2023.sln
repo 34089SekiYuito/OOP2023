@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "Sample\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallApp", "Sample\BallApp\BallApp.csproj", "{8881A46B-9894-4645-9432-26095EF2959E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter01", "Chapter01", "{A38A864C-4671-4D7F-839C-DA25F7CD65B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSample", "Chapter01\Product\ProductSample.csproj", "{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{8881A46B-9894-4645-9432-26095EF2959E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8881A46B-9894-4645-9432-26095EF2959E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8881A46B-9894-4645-9432-26095EF2959E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{7E42342B-D7CD-43CB-9EEF-9D5BD1E87877} = {A26473E1-2CCB-44F7-801D-56521E6BB34D}
 		{EC5AFD60-10D8-4A6E-B970-ABFEF70E78D0} = {A26473E1-2CCB-44F7-801D-56521E6BB34D}
 		{8881A46B-9894-4645-9432-26095EF2959E} = {A26473E1-2CCB-44F7-801D-56521E6BB34D}
+		{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55} = {A38A864C-4671-4D7F-839C-DA25F7CD65B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8B064F7-E636-40B8-BF3D-BB215C3C0503}
