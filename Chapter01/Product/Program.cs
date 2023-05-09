@@ -28,10 +28,13 @@ namespace ProductSample {
             string[] week = { "日", "月", "火", "水", "木", "金", "土" };
 
             Console.WriteLine("誕生日を入力");
+            //西暦の入力
             Console.Write("西暦：");
             int year = int.Parse(Console.ReadLine());
+            //月の入力
             Console.Write("月：");
             int mon = int.Parse(Console.ReadLine());
+            //日の入力
             Console.Write("日：");
             int day = int.Parse(Console.ReadLine());
 
@@ -40,8 +43,8 @@ namespace ProductSample {
             //生まれてからの時間を求める
             TimeSpan ts = DateTime.Today - birthday;
 
-            Console.WriteLine("あなたは生まれてから今日まで" + ts.Days + "日目です。");
-            Console.WriteLine("あなたは" + week[(int)birthday.DayOfWeek] + "曜日に生まれました。");
+            Console.WriteLine("あなたは生まれてから今日まで{0}日目です。", ts.Days);
+            Console.WriteLine("あなたは{0}曜日に生まれました。", week[(int)birthday.DayOfWeek]);
             
 #endif
 
