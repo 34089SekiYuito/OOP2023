@@ -24,6 +24,9 @@ namespace ProductSample {
             Console.WriteLine("10日後：" + daysAfter10.ToString("yyyy年M月d日"));
             Console.WriteLine("10日前：" + daysBefor10.ToString("yyyy年M月d日"));
 #else
+            //曜日の配列
+            string[] week = { "日", "月", "火", "水", "木", "金", "土" };
+
             Console.WriteLine("誕生日を入力");
             Console.Write("西暦：");
             int year = int.Parse(Console.ReadLine());
@@ -37,7 +40,9 @@ namespace ProductSample {
             //生まれてからの時間を求める
             TimeSpan ts = DateTime.Today - birthday;
 
-            Console.Write("あなたは生まれてから今日まで" + ts.Days + "日目です。");
+            Console.WriteLine("あなたは生まれてから今日まで" + ts.Days + "日目です。");
+            Console.WriteLine("あなたは" + week[(int)birthday.DayOfWeek] + "曜日に生まれました。");
+            
 #endif
 
         }
