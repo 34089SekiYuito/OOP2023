@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "距離換算プログラム
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "Chapter02\距離換算プログラム\DistanceConverter\DistanceConverter.csproj", "{E43AEC15-1EF9-410B-8B40-23992AAC7AEE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "売り上げ集計プログラム", "売り上げ集計プログラム", "{0667A662-E4FC-43AE-B159-9E67EA956596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesCalculator", "Chapter02\売り上げ集計プログラム\SalesCalculator\SalesCalculator.csproj", "{FBDE95DC-3599-49A3-AAB2-EDEB7CCADD0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{E43AEC15-1EF9-410B-8B40-23992AAC7AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E43AEC15-1EF9-410B-8B40-23992AAC7AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E43AEC15-1EF9-410B-8B40-23992AAC7AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBDE95DC-3599-49A3-AAB2-EDEB7CCADD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBDE95DC-3599-49A3-AAB2-EDEB7CCADD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBDE95DC-3599-49A3-AAB2-EDEB7CCADD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBDE95DC-3599-49A3-AAB2-EDEB7CCADD0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +66,8 @@ Global
 		{6E9FA336-3A46-4CF9-8F82-C6BFF19DAE55} = {A38A864C-4671-4D7F-839C-DA25F7CD65B9}
 		{D3C24821-5705-4797-91F9-F267CC0F276A} = {C3389E85-AFF8-4B8C-84C7-B1336339BD60}
 		{E43AEC15-1EF9-410B-8B40-23992AAC7AEE} = {D3C24821-5705-4797-91F9-F267CC0F276A}
+		{0667A662-E4FC-43AE-B159-9E67EA956596} = {C3389E85-AFF8-4B8C-84C7-B1336339BD60}
+		{FBDE95DC-3599-49A3-AAB2-EDEB7CCADD0F} = {0667A662-E4FC-43AE-B159-9E67EA956596}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8B064F7-E636-40B8-BF3D-BB215C3C0503}
