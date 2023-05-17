@@ -7,12 +7,30 @@ using System.Threading.Tasks;
 namespace Exercise01 {
     class Program {
         static void Main(string[] args) {
-            Song[] songs = new Song[2];
-            songs[0] = new Song("ナンセンス文学", "Eve", 270);
-            songs[1] = new Song("不法侵入", "ずっと真夜中でいいのに", 267);
+            //2.1.3
+            var songs = new Song[] {
+                new Song("Let it be", "The Beatles", 243),
+                new Song("Bridge Over Troubled Water", "Simon & Garfunkel", 293),
+                new Song("Close To You", "Carpenters", 276),
+                new Song("Honesty", "Billy Joel", 231),
+                new Song("I Will Always Love You", "Whitney Houston", 273),
+            };
+            PrintSongs(songs);
 
+            var lists = new List<Song>();
+            lists.Add(new Song("Let it be", "The Beatles", 243));
+            lists.Add(new Song("Bridge Over Troubled Water", "Simon & Garfunkel", 293));
+            lists.Add(new Song("Close To You", "Carpenters", 276));
+            lists.Add(new Song("Honesty", "Billy Joel", 231));
+            lists.Add(new Song("I Will Always Love You", "Whitney Houston", 273));
+
+            PrintSongs(lists);
+
+        }
+
+        private static void PrintSongs(IEnumerable<Song> songs) {
             foreach (var song in songs) {
-                Console.WriteLine("{0}  {1}  {2}:{3}", song.Title, song.ArtistName, song.Length / 60, song.Length % 60);
+                Console.WriteLine("{0}  {1}  {2:00}:{3:00}", song.Title, song.ArtistName, song.Length / 60, song.Length % 60);
             }
         }
     }
