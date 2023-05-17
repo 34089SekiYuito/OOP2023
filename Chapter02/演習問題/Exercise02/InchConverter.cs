@@ -14,5 +14,10 @@ namespace Eexercise02 {
         public static double FromMeter(double inch) {
             return inch * ratio;
         }
+
+        //メートルからインチを求める
+        public static double ToMeter(double inch) {
+            return inch / ratio;
+        }
     }
 }
