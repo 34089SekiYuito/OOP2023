@@ -31,6 +31,22 @@ namespace Exercise03 {
             return dict;
         }
 
+        //商品別売り上げを求める
+        public IDictionary<string, int> GetPerProductSales() {
+            var dict = new SortedDictionary<string, int>();
+            foreach (var sale in _sales) {
+                if (dict.ContainsKey(sale.ProductCategory)) {
+                    //商品がすでに存在する(売り上げ加算)
+                    dict[sale.ProductCategory] += sale.Amount;
+                }
+                else {
+                    //商品が存在しない(新規格納)
+                    dict[sale.ProductCategory] = sale.Amount;
+                }
+            }
+            return dict;
+        }
+
         //売り上げデータを読み込み、Saleオブジェクトのリストを返す
         private IEnumerable<Sale> ReadSales(String filePath) {
             var sales = new List<Sale>();     //売り上げデータを格納する
