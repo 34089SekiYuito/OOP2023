@@ -9,16 +9,19 @@ namespace Exercise03 {
         static void Main(string[] args) {
             var sales = new SalesCounter(@"data\sales.csv");
 
-            //店舗別売り上げの出力
-            var amountPerStore = sales.GetPerStoreSales();
-            foreach (var obj in amountPerStore) {
-                Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
-            }
-            Console.WriteLine();    //改行
+            //入力処理
+            Console.Write("**売り上げ集計**\n1:店舗別売り上げ\n2:商品カテゴリー別売り上げ\n>");
+            int num = int.Parse(Console.ReadLine());    //読み込み
 
-            //商品別売り上げの出力
-            var amountPerProduct = sales.GetPerProductSales();
-            foreach (var obj in amountPerProduct) {
+            IDictionary<string, int> amount = new Dictionary<string, int>();
+            if (num == 1) {
+                amount = sales.GetPerStoreSales();   //店舗別売り上げの出力
+            }
+            else if (num == 2) {
+                amount = sales.GetPerProductSales(); //商品カテゴリー別売り上げの出力
+            }
+
+            foreach (var obj in amount) {
                 Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
             }
         }
