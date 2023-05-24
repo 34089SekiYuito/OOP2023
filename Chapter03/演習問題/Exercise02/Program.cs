@@ -32,7 +32,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<string> names) {
-            Console.WriteLine(names.FindAll(s => s.Contains("o")).Count());
+            Console.WriteLine(names.Count(s => s.Contains("o")));
         }
 
         private static void Exercise2_3(List<string> names) {
@@ -43,7 +43,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> names) {
-            var count = names.Where(s => s[0] == 'B').Select(s => s.Length);
+            var count = names.Where(s => s.StartsWith("B")).Select(s => new { s, s.Length });
+            foreach (var item in count) {
+                Console.WriteLine("{0},{1}", item.s, item.Length);
+            }
         }
     }
 }
