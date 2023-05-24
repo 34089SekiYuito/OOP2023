@@ -43,10 +43,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> names) {
-            var cities = names.Where(s => s[0] == 'B').Select(s => s.Length);
-            foreach (var n in cities) {
-                Console.WriteLine(n);
-            }
+            var count = names.Where(s => s[0] == 'B').Select(s => s.Length);
         }
     }
 }
+
