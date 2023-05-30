@@ -20,16 +20,12 @@ namespace Exercise01 {
 
         //1か月後を求めるメソッド
         public YearMonth AddOneMonth() {
-            int afterYear = Year;
-            int afterMonth = Month;
             if (Month == 12) {
-                afterYear++;
-                afterMonth = 1;
+                return new YearMonth(Year + 1, 1);
             }
             else {
-                afterMonth++;
+                return new YearMonth(Year, Month + 1);
             }
-            return new YearMonth(afterYear, afterMonth);
         }
 
         //ToStringのオーバーライド
