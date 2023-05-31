@@ -51,12 +51,8 @@ namespace Exercise02 {
 
         //1か月後を新たな配列に格納し、年月順に並び替え
         private static void Exercise2_5(YearMonth[] ymCollection) {
-            var nextMonthYm = new YearMonth[ymCollection.Length];
-            for (int i = 0; i < ymCollection.Length; i++) {
-                nextMonthYm[i] = ymCollection[i].AddOneMonth();
-            }
-            var sortYm = nextMonthYm.OrderBy(ym => ym.Year).ThenBy(ym => ym.Month).ToArray();
-            Exercise2_2(sortYm);
+            var nextMonthYm = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
+            Exercise2_2(nextMonthYm.OrderBy(ym => ym.Year).ThenBy(ym => ym.Month).ToArray());
         }
     }
 }
