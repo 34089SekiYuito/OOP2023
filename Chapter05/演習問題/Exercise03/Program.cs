@@ -26,7 +26,7 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            var count = text.Count(s => s == ' ');
+            var count = text.Count(c => c == ' ');
             Console.WriteLine(count);
         }
 
@@ -36,23 +36,25 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_3(string text) {
-            var wordCount = text.Split(new[] { ' ', '.', }, StringSplitOptions.RemoveEmptyEntries).Count();
+            var wordCount = text.Split(' ').Length;
             Console.WriteLine(wordCount);
         }
 
         private static void Exercise3_4(string text) {
-            var words = text.Split(new[] { ' ', '.', }, StringSplitOptions.RemoveEmptyEntries).Where(s => s.Length <= 4).ToList();
-            words.ForEach(s => Console.WriteLine(s)) ;
+            var words = text.Split(' ').Where(s => s.Length <= 4).ToList();
+            words.ForEach(Console.WriteLine);
         }
 
         private static void Exercise3_5(string text) {
-            var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var sb = new StringBuilder();
-            foreach (var word in words) {
-                sb.Append(word).Append(' ');
+            var words = text.Split(' ');
+            if (words.Length > 0) {
+                var sb = new StringBuilder(words[0]);
+                foreach (var word in words.Skip(1)) {
+                    sb.Append(' ').Append(word);
+                }
+                var newText = sb.ToString();
+                Console.WriteLine(newText);
             }
-            var newText = sb.ToString().Trim();
-            Console.WriteLine(newText);
         }
     }
 }
