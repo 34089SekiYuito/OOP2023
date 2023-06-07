@@ -25,18 +25,29 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(int[] numbers) {
+            Console.WriteLine(numbers.Max());
         }
 
         private static void Exercise1_2(int[] numbers) {
+            Console.WriteLine("{0} {1}", numbers[numbers.Length - 2], numbers[numbers.Length - 1]);   //仮
         }
 
         private static void Exercise1_3(int[] numbers) {
+            var strNumbers = numbers.Select(n => n.ToString());
+            foreach (var sNum in strNumbers) {
+                Console.WriteLine(sNum);
+            }
         }
 
         private static void Exercise1_4(int[] numbers) {
+            var topNum = numbers.OrderBy(n => n).Take(3);
+            foreach (var num in topNum) {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {
+            Console.WriteLine(numbers.Distinct().Count(n => n > 10));
         }
     }
 }
