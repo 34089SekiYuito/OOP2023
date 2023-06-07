@@ -29,7 +29,9 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            Console.WriteLine("{0} {1}", numbers[numbers.Length - 2], numbers[numbers.Length - 1]);   //仮
+            foreach (var num in numbers.Skip(numbers.Length -2 )) {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_3(int[] numbers) {
