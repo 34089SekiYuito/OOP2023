@@ -56,7 +56,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
-            Console.WriteLine(books.Find(b => b.Price >= 4000).Title);
+            var book = books.FirstOrDefault(b => b.Price >= 4000);
+            Console.WriteLine(book != null ? book.Title : "該当なし");
         }
 
         private static void Exercise2_5(List<Book> books) {
