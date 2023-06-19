@@ -29,7 +29,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            foreach (var num in numbers.Skip(numbers.Length -2 )) {
+            foreach (var num in numbers.Skip(numbers.Length - 2)) {
                 Console.WriteLine(num);
             }
         }

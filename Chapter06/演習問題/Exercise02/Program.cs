@@ -64,9 +64,17 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_6(List<Book> books) {
+            var booksObj = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price);
+            foreach (var book in booksObj) {
+                Console.WriteLine("{0} {1}", book.Title, book.Price);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) {
+            var bookObj = books.Where(s => s.Title.Contains("C#")).Where(b => b.Pages <= 500);
+            foreach (var book in bookObj) {
+                Console.WriteLine(book.Title);
+            }
         }
     }
 
