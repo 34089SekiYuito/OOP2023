@@ -16,15 +16,20 @@ namespace Section01 {
             Console.Write("県名:");   //県名の入力
             pref = Console.ReadLine();
 
-            while (pref != "999") {
+            while (true) {
+                if (pref == "999" || pref == "９９９") //終了
+                    break;
+
+                //入力された県がすでに存在する場合
                 if (Prefectures.ContainsKey(pref)) {
-                    Console.Write("すでに登録されています。上書きしますか？ y/n:");  //入力された県がすでに存在する場合
-                    overwrite = Console.ReadLine();
-                    if (overwrite == "y")
-                        inputCityInfo(Prefectures, pref);
+                    Console.Write("すでに登録されています。上書きしますか？ y/n >");
+                    overwrite = Console.ReadLine().ToLower();
+                    if (overwrite == "y" || overwrite == "ｙ")   //上書きする場合
+                        inputSityInfo(Prefectures, pref);
                 }
                 else
-                    inputCityInfo(Prefectures, pref);
+                    inputSityInfo(Prefectures, pref);
+
                 //次の繰り返しの入力処理
                 Console.Write("県名:");   //県名の入力
                 pref = Console.ReadLine();
@@ -34,8 +39,9 @@ namespace Section01 {
             Console.Write("1:一覧表示,2:県名指定\n>");   //出力方法の選択
             int num = int.Parse(Console.ReadLine());
             if (num == 1) {
-                foreach (var Prefecture in Prefectures.Keys) {
-                    Console.WriteLine("{0}({1}) {2}人", Prefecture, Prefectures[Prefecture].City, Prefectures[Prefecture].Population);
+
+                foreach (var Prefecture in Prefectures.OrderByDescending(p => p.Value.Population)) {
+                    Console.WriteLine("{0}【{1} (人口{2}人)】", Prefecture.Key, Prefecture.Value.City, Prefecture.Value.Population);
                 }
             }
             else {
@@ -66,18 +72,18 @@ namespace Section01 {
             #endregion
         }
 
-        private static void inputCityInfo(Dictionary<string, CityInfo> Prefectures, string pref) {
+        private static void inputSityInfo(Dictionary<string, CityInfo> Prefectures, string pref) {
             Console.Write("所在地:");  //市の入力
             string city = Console.ReadLine();
             Console.Write("人口:");  //人口の入力
             int pop = int.Parse(Console.ReadLine());
-            CityInfo info = new CityInfo { City = city, Population = pop };
+            CityInfo info = new CityInfo { City = city, Population = pop };  //CityInfoインスタンスを作成
             Prefectures[pref] = info;    //登録
         }
 
         class CityInfo {
-            public string City { get; set; }
-            public int Population { get; set; }
+            public string City { get; set; }    //都市
+            public int Population { get; set; }  //人口
         }
     }
 }
