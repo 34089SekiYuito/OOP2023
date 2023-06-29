@@ -16,10 +16,12 @@ namespace Exercise01 {
         private static void Exercise1_1(string text) {
             var count = new Dictionary<char, int>();
             foreach (var Char in text.Replace(" ", "").ToUpper()) {
-                if (count.ContainsKey(Char))
-                    count[Char]++;
-                else
-                    count[Char] = 1;
+                if ('A' <= Char && Char <= 'Z') {
+                    if (count.ContainsKey(Char))
+                        count[Char]++;
+                    else
+                        count[Char] = 1;
+                }
             }
             //出力処理
             foreach (var item in count.OrderBy(c => c.Key)) {
@@ -30,10 +32,12 @@ namespace Exercise01 {
         private static void Exercise1_2(string text) {
             var count = new SortedDictionary<char, int>();
             foreach (var Char in text.Replace(" ", "").ToUpper()) {
-                if (count.ContainsKey(Char))
-                    count[Char]++;
-                else
-                    count[Char] = 1;
+                if ('A' <= Char && Char <= 'Z') {
+                    if (count.ContainsKey(Char))
+                        count[Char]++;
+                    else
+                        count[Char] = 1;
+                }
             }
             //出力処理
             foreach (var item in count) {
