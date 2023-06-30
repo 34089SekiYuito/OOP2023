@@ -17,10 +17,13 @@ namespace Exercise02 {
             //7.2.3
             //上のAddメソッドで、2つのオブジェクトを追加しているので、読み込んだ単語数+2が、Countの値になる。
             Console.WriteLine(abbrs.Count);
+            Console.WriteLine();
 
             //7.2.3(Removeの呼び出し)
-            Console.WriteLine(abbrs.Remove("IOC"));
-            Console.WriteLine(abbrs.Remove("aaa"));
+            if (abbrs.Remove("IOC"))
+                Console.WriteLine(abbrs.Count);
+            if (!abbrs.Remove("aaa"))
+                Console.WriteLine("削除できません\n");
 
             //7.2.4
             //IEnumerable()を実装したので、LINQが使える。
