@@ -10,12 +10,10 @@ namespace Exercise02 {
         static void Main(string[] args) {
             var dateTime = DateTime.Now;
             DateTime nextday;
-            var culture = new CultureInfo("ja-JP");
-
+            
             foreach (DayOfWeek dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
                 nextday = NextDay(dateTime, dayOfWeek);
-                culture.DateTimeFormat.Calendar = new JapaneseCalendar();
-                Console.WriteLine("{0}の次週の{1}は{2}", dateTime.ToString("yyyy/MM/dd"), dayOfWeek, nextday.ToString("yyyy/M/dd(ddd)"));
+                Console.WriteLine("{0:yyyy/MM/dd}の次週の{1}は{2:yyyy/M/dd(ddd)}", dateTime, dayOfWeek, nextday);
             }
         }
 
