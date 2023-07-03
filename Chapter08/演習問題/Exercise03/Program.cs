@@ -17,12 +17,12 @@ namespace Exercise03 {
     }
 
     class TimeWatch {
-        private DateTime StartDate { get; set; }
+        private DateTime _time { get; set; }
 
         public void Start() {
-            StartDate = DateTime.Now;
+            _time = DateTime.Now;
         }
 
-        public TimeSpan Stop() => DateTime.Now - StartDate;
+        public TimeSpan Stop() => DateTime.Now - _time;
     }
 }
