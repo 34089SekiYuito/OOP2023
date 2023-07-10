@@ -32,11 +32,9 @@ namespace CarReportSystem {
         }
 
         private CarReport.MakerGroup getSelectedMaker() {
-            foreach (RadioButton rb in gbMaker.Controls) {
-                if (rb.Checked)
-                    break;
-
-
+            foreach (RadioButton item in gbMaker.Controls) {
+                if (item.Checked)
+                    return (CarReport.MakerGroup)int.Parse(item.Tag.ToString());
             }
             return CarReport.MakerGroup.その他;
         }
