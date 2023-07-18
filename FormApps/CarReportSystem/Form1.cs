@@ -22,6 +22,8 @@ namespace CarReportSystem {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             buttonDisable();
             statasLabelDisp();  //表示クリア
+            tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
+            tmTimeDisp.Start();
         }
 
         //追加ボタンがクリックされた時のイベントハンドラ
@@ -104,8 +106,9 @@ namespace CarReportSystem {
 
         //ファイルの開くボタンのイベントハンドラ
         private void btImageOpen_Click(object sender, EventArgs e) {
-            ofdImageFileOpen.ShowDialog();
-            pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK) {
+                pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            }
         }
 
         //ファイルの削除ボタンのイベントハンドラ
@@ -113,11 +116,17 @@ namespace CarReportSystem {
             pbCarImage.Image = null;
         }
 
+        //画像変更のイベントハンドラ
+        private void btScaleChange_Click(object sender, EventArgs e) {
+            int tmp = (int)pbCarImage.SizeMode;
+            pbCarImage.SizeMode = (PictureBoxSizeMode)(++tmp % 5);
+        }
+
         //編集 色設定が押された時の色設定
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            ColorDialog cd = new ColorDialog();
-            cd.ShowDialog();
-            BackColor = cd.Color;
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                BackColor = cdColor.Color;
+            }
         }
 
         //終了ボタンのイベントハンドラ
@@ -190,5 +199,10 @@ namespace CarReportSystem {
             var vf = new VersionForm();
             vf.ShowDialog();    //モーダルダイヤログとして表示
         }
+
+        private void tmTimeDisp_Tick(object sender, EventArgs e) {
+            tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
+        }
+
     }
 }
