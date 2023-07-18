@@ -55,16 +55,14 @@ namespace CarReportSystem {
 
             //各項目のクリア処理
             clearScreen();
-            buttonDisable();
-
         }
 
         //削除ボタンのイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
             int delete = dgvCarReports.CurrentRow.Index;
             dgvCarReports.Rows.RemoveAt(delete);
-            buttonDisable();
             dgvCarReports.ClearSelection();
+            clearScreen();
         }
 
 
@@ -92,15 +90,16 @@ namespace CarReportSystem {
 
         //レコードの選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-            cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-            checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-            cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-            tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-            pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+            if (dgvCarReports.Rows.Count != 0) {
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+                checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
 
-            buttonEnabled();
-
+                buttonEnabled();
+            }
         }
 
         //ファイルの開くボタンのイベントハンドラ
@@ -114,6 +113,13 @@ namespace CarReportSystem {
             pbCarImage.Image = null;
         }
 
+        //編集 色設定が押された時の色設定
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            ColorDialog cd = new ColorDialog();
+            cd.ShowDialog();
+            BackColor = cd.Color;
+        }
+
         //終了ボタンのイベントハンドラ
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
@@ -121,14 +127,14 @@ namespace CarReportSystem {
 
         //ボタンを有効化
         private void buttonEnabled() {
-            btDeleteReport.Enabled = true;
-            btModifyReport.Enabled = true;
+            btDeleteReport.Enabled = true;  //削除ボタン有効
+            btModifyReport.Enabled = true;  //修正ボタン有効
         }
 
         //ボタンを無効化
         private void buttonDisable() {
-            btDeleteReport.Enabled = false;
-            btModifyReport.Enabled = false;
+            btDeleteReport.Enabled = false; //削除ボタン無効
+            btModifyReport.Enabled = false; //修正ボタン無効
         }
 
         //スクリーンを初期化
@@ -140,6 +146,7 @@ namespace CarReportSystem {
             tbReport.Text = "";
             pbCarImage.Image = null;
             dgvCarReports.ClearSelection();
+            buttonDisable();
         }
 
         //ステータスラベルのテキスト表示・非表示（引数なしはメッセージ非表示）
