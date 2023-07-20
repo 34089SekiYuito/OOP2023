@@ -25,7 +25,6 @@ namespace CalendarApp {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            settings.MainFormColor = cdColor.Color.ToArgb();
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             buttonDisable();
             statasLabelDisp();  //表示クリア
@@ -34,8 +33,8 @@ namespace CalendarApp {
             //設定ファイルの逆シリアル化
             using (var reader = XmlReader.Create("settings.xml")) {
                 var serialzer = new XmlSerializer(typeof(Settings));
-                var setting = serialzer.Deserialize(reader) as Settings;
-                BackColor = Color.FromArgb(setting.MainFormColor);
+                settings = serialzer.Deserialize(reader) as Settings;
+                BackColor = Color.FromArgb(settings.MainFormColor);
             }
         }
 
@@ -141,7 +140,7 @@ namespace CalendarApp {
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cdColor.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColor.Color;
-                settings.MainFormColor = cdColor.Color.ToArgb();
+                settings.MainFormColor = BackColor.ToArgb();
             }
         }
 
@@ -221,6 +220,7 @@ namespace CalendarApp {
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            settings.MainFormColor = BackColor.ToArgb();
             //設定ファイルのシリアル化
             using (var write = XmlWriter.Create("settings.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
