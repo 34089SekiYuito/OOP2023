@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
-namespace CarReportSystem {
+namespace CalendarApp {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
+        private int mode;
+
+        //設定情報
+        Settings settings = new Settings();
 
         public Form1() {
             InitializeComponent();
@@ -19,11 +25,18 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            settings.MainFormColor = cdColor.Color.ToArgb();
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             buttonDisable();
             statasLabelDisp();  //表示クリア
             tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
             tmTimeDisp.Start();
+            //設定ファイルの逆シリアル化
+            using (var reader = XmlReader.Create("settings.xml")) {
+                var serialzer = new XmlSerializer(typeof(Settings));
+                var setting = serialzer.Deserialize(reader) as Settings;
+                BackColor = Color.FromArgb(setting.MainFormColor);
+            }
         }
 
         //追加ボタンがクリックされた時のイベントハンドラ
@@ -118,15 +131,18 @@ namespace CarReportSystem {
 
         //画像変更のイベントハンドラ
         private void btScaleChange_Click(object sender, EventArgs e) {
-            int tmp = (int)pbCarImage.SizeMode;
-            pbCarImage.SizeMode = (PictureBoxSizeMode)(++tmp % 5);
+            pbCarImage.SizeMode = (PictureBoxSizeMode)(mode < 4 ? ((mode == 1) ? 3 : ++mode) : 0);
+
+            //int tmp = (int)pbCarImage.SizeMode;
+            //pbCarImage.SizeMode = (PictureBoxSizeMode)(++tmp % 5);
         }
 
         //編集 色設定が押された時の色設定
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cdColor.ShowDialog() == DialogResult.OK) { 
+            if (cdColor.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColor.Color;
-                }
+                settings.MainFormColor = cdColor.Color.ToArgb();
+            }
         }
 
         //終了ボタンのイベントハンドラ
@@ -204,5 +220,12 @@ namespace CarReportSystem {
             tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定ファイルのシリアル化
+            using (var write = XmlWriter.Create("settings.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(write, settings);
+            }
+        }
     }
 }

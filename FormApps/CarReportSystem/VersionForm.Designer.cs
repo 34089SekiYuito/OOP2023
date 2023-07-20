@@ -1,5 +1,5 @@
 ﻿
-namespace CarReportSystem {
+namespace CalendarApp {
     partial class VersionForm {
         /// <summary>
         /// Required designer variable.

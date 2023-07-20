@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarReportSystem {
+namespace CalendarApp {
     public partial class VersionForm : Form {
         public VersionForm() {
             InitializeComponent();
