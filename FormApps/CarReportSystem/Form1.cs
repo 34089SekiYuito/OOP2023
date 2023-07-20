@@ -124,9 +124,9 @@ namespace CarReportSystem {
 
         //編集 色設定が押された時の色設定
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cdColor.ShowDialog() == DialogResult.OK) {
+            if (cdColor.ShowDialog() == DialogResult.OK) { 
                 BackColor = cdColor.Color;
-            }
+                }
         }
 
         //終了ボタンのイベントハンドラ
