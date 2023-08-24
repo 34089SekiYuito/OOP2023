@@ -471,8 +471,8 @@ namespace CalendarApp {
             // statusDisp
             // 
             this.statusDisp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsInfoText,
-            this.tsTime});
+            this.tsTime,
+            this.tsInfoText});
             this.statusDisp.Location = new System.Drawing.Point(0, 568);
             this.statusDisp.Name = "statusDisp";
             this.statusDisp.Size = new System.Drawing.Size(702, 22);
@@ -483,14 +483,14 @@ namespace CalendarApp {
             // tsInfoText
             // 
             this.tsInfoText.Name = "tsInfoText";
-            this.tsInfoText.Size = new System.Drawing.Size(118, 17);
-            this.tsInfoText.Text = "toolStripStatusLabel1";
+            this.tsInfoText.Size = new System.Drawing.Size(82, 17);
+            this.tsInfoText.Text = "インフォメーション";
             // 
             // tsTime
             // 
             this.tsTime.Name = "tsTime";
-            this.tsTime.Size = new System.Drawing.Size(118, 17);
-            this.tsTime.Text = "toolStripStatusLabel1";
+            this.tsTime.Size = new System.Drawing.Size(55, 17);
+            this.tsTime.Text = "時刻表示";
             // 
             // tmTimeDisp
             // 

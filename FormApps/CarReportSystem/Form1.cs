@@ -14,7 +14,7 @@ namespace CalendarApp {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
-        private int mode;
+        //private int mode; //画像変更用
 
         //設定情報
         Settings settings = new Settings();
@@ -75,7 +75,6 @@ namespace CalendarApp {
         private void btDeleteReport_Click(object sender, EventArgs e) {
             int delete = dgvCarReports.CurrentRow.Index;
             dgvCarReports.Rows.RemoveAt(delete);
-            dgvCarReports.ClearSelection();
             clearScreen();
         }
 
@@ -100,6 +99,8 @@ namespace CalendarApp {
                 Report = tbReport.Text,
                 CarImage = pbCarImage.Image
             };
+
+            clearScreen();
         }
 
         //レコードの選択時
@@ -111,7 +112,7 @@ namespace CalendarApp {
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
-
+                //ボタン有効化
                 buttonEnabled();
             }
         }
@@ -130,10 +131,9 @@ namespace CalendarApp {
 
         //画像変更のイベントハンドラ
         private void btScaleChange_Click(object sender, EventArgs e) {
-            pbCarImage.SizeMode = (PictureBoxSizeMode)(mode < 4 ? ((mode == 1) ? 3 : ++mode) : 0);
-
-            //int tmp = (int)pbCarImage.SizeMode;
-            //pbCarImage.SizeMode = (PictureBoxSizeMode)(++tmp % 5);
+            //pbCarImage.SizeMode = (PictureBoxSizeMode)(mode < 4 ? ((mode == 1) ? 3 : ++mode) : 0);
+            int tmp = (int)pbCarImage.SizeMode;
+            pbCarImage.SizeMode = (PictureBoxSizeMode)(tmp == 1 ? 3 : (++tmp % 5));
         }
 
         //編集 色設定が押された時の色設定
@@ -170,6 +170,7 @@ namespace CalendarApp {
             tbReport.Text = "";
             pbCarImage.Image = null;
             dgvCarReports.ClearSelection();
+            dgvCarReports.CurrentCell = null;
             buttonDisable();
         }
 
