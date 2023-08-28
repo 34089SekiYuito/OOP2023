@@ -71,8 +71,8 @@ namespace CalendarApp {
             CarReports.Add(car);
 
             //コンボボックスに登録
-            setAuthor(cbAuthor.Text);
-            setCarName(cbCarName.Text);
+            setCbAuthor(cbAuthor.Text);
+            setCbCarName(cbCarName.Text);
 
             //各項目のクリア処理
             clearScreen();
@@ -251,35 +251,40 @@ namespace CalendarApp {
             }
         }
 
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
                 try {
                     var bf = new BinaryFormatter();
                     using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
                         CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-                        dgvCarReports.ClearSelection();
-                        dgvCarReports.CurrentCell = null;
-
-                        foreach (var item in CarReports) {
-                            //コンボボックスに登録
-                            setAuthor(item.Author.ToString());
-                            setCarName(item.CarName.ToString());
-                        }
                     }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
-            dgvCarReports.DataSource = CarReports;
+
+            dgvCarReports.DataSource = null;    //dgvを初期化
+            dgvCarReports.DataSource = CarReports;  
+            dgvCarReports.ClearSelection(); //dgvの選択解除
+            dgvCarReports.CurrentCell = null;   //dgvの選択解除
+            cbAuthor.Items.Clear(); //cbAuthorの初期化
+            cbCarName.Items.Clear();    //cbCarNameの初期化
+            //コンボボックスに登録
+            foreach (var item in CarReports) {
+                setCbAuthor(item.Author);
+                setCbCarName(item.CarName);
+            }
             clearScreen();
+            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
         }
 
-        private void setAuthor(string author) {
+        //cbAuthorに登録
+        private void setCbAuthor(string author) {
             if (!cbAuthor.Items.Contains(author))
                 cbAuthor.Items.Add(author);
         }
 
-        private void setCarName(string carName) {
+        //cbCarNameに登録
+        private void setCbCarName(string carName) {
             if (!cbCarName.Items.Contains(carName))
                 cbCarName.Items.Add(carName);
         }
