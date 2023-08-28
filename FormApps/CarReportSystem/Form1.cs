@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,11 +32,18 @@ namespace CalendarApp {
             statasLabelDisp();  //表示クリア
             tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
             tmTimeDisp.Start();
-            //設定ファイルの逆シリアル化
-            using (var reader = XmlReader.Create("settings.xml")) {
-                var serialzer = new XmlSerializer(typeof(Settings));
-                settings = serialzer.Deserialize(reader) as Settings;
-                BackColor = Color.FromArgb(settings.MainFormColor);
+
+            try {
+                //設定ファイルの逆シリアル化
+                using (var reader = XmlReader.Create("settings.xml")) {
+                    var serialzer = new XmlSerializer(typeof(Settings));
+                    settings = serialzer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settings.MainFormColor);
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                BackColor = DefaultBackColor;
             }
         }
 
@@ -62,10 +71,8 @@ namespace CalendarApp {
             CarReports.Add(car);
 
             //コンボボックスに登録
-            if (!cbAuthor.Items.Contains(cbAuthor.Text))
-                cbAuthor.Items.Add(cbAuthor.Text);
-            if (!cbCarName.Items.Contains(cbCarName.Text))
-                cbCarName.Items.Add(cbCarName.Text);
+            setAuthor(cbAuthor.Text);
+            setCarName(cbCarName.Text);
 
             //各項目のクリア処理
             clearScreen();
@@ -105,7 +112,7 @@ namespace CalendarApp {
 
         //レコードの選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            if (dgvCarReports.Rows.Count != 0) {
+            if (dgvCarReports.CurrentCell != null) {
                 dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
                 cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
                 checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
@@ -231,14 +238,50 @@ namespace CalendarApp {
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
             if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
-
+                try {
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create)) {
+                        bf.Serialize(fs, CarReports);
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+                try {
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
+                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvCarReports.DataSource = null;
+                        dgvCarReports.DataSource = CarReports;
+                        dgvCarReports.ClearSelection();
+                        dgvCarReports.CurrentCell = null;
 
+                        foreach (var item in CarReports) {
+                            //コンボボックスに登録
+                            setAuthor(item.Author.ToString());
+                            setCarName(item.CarName.ToString());
+                        }
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
+            dgvCarReports.DataSource = CarReports;
+            clearScreen();
+        }
+
+        private void setAuthor(string author) {
+            if (!cbAuthor.Items.Contains(author))
+                cbAuthor.Items.Add(author);
+        }
+
+        private void setCarName(string carName) {
+            if (!cbCarName.Items.Contains(carName))
+                cbCarName.Items.Add(carName);
         }
     }
 }
