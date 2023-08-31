@@ -289,6 +289,7 @@ namespace CalendarApp {
             this.dgvCarReports.Size = new System.Drawing.Size(609, 198);
             this.dgvCarReports.TabIndex = 7;
             this.dgvCarReports.TabStop = false;
+            this.dgvCarReports.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarReports_CellClick);
             this.dgvCarReports.Click += new System.EventHandler(this.dgvCarReports_Click);
             // 
             // label6

@@ -33,6 +33,9 @@ namespace CalendarApp {
             tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
             tmTimeDisp.Start();
 
+            dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue; //全体に色を設定   
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.FloralWhite;    //奇数行の色を上書き設定
+            
             try {
                 //設定ファイルの逆シリアル化
                 using (var reader = XmlReader.Create("settings.xml")) {
@@ -112,16 +115,16 @@ namespace CalendarApp {
 
         //レコードの選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            if (dgvCarReports.CurrentCell != null) {
-                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-                checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
-                //ボタン有効化
-                buttonEnabled();
-            }
+            //if (dgvCarReports.CurrentCell != null) {
+            //    dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+            //    cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+            //    checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+            //    cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+            //    tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+            //    pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+            //    //ボタン有効化
+            //    buttonEnabled();
+            //}
         }
 
         //ファイルの開くボタンのイベントハンドラ
@@ -236,6 +239,7 @@ namespace CalendarApp {
             }
         }
 
+        //ファイルを保存
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
             if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
                 try {
@@ -251,6 +255,7 @@ namespace CalendarApp {
             }
         }
 
+        //ファイルを開く
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
             if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
                 try {
@@ -263,7 +268,7 @@ namespace CalendarApp {
             }
 
             dgvCarReports.DataSource = null;    //dgvを初期化
-            dgvCarReports.DataSource = CarReports;  
+            dgvCarReports.DataSource = CarReports;
             dgvCarReports.ClearSelection(); //dgvの選択解除
             dgvCarReports.CurrentCell = null;   //dgvの選択解除
             cbAuthor.Items.Clear(); //cbAuthorの初期化
@@ -287,6 +292,19 @@ namespace CalendarApp {
         private void setCbCarName(string carName) {
             if (!cbCarName.Items.Contains(carName))
                 cbCarName.Items.Add(carName);
+        }
+
+        private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (dgvCarReports.CurrentCell != null) {
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+                checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+                //ボタン有効化
+                buttonEnabled();
+            }
         }
     }
 }
