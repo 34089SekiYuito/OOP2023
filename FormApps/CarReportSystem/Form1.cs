@@ -23,7 +23,7 @@ namespace CalendarApp {
 
         public Form1() {
             InitializeComponent();
-            dgvCarReports.DataSource = CarReports;
+            //dgvCarReports.DataSource = CarReports;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -35,7 +35,7 @@ namespace CalendarApp {
 
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue; //全体に色を設定   
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.FloralWhite;    //奇数行の色を上書き設定
-            
+
             try {
                 //設定ファイルの逆シリアル化
                 using (var reader = XmlReader.Create("settings.xml")) {
@@ -304,6 +304,19 @@ namespace CalendarApp {
                 //ボタン有効化
                 buttonEnabled();
             }
+        }
+
+        private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202331DataSet);
+
+        }
+
+        //接続ボタンイベントハンドラ
+        private void btConnection_Click(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202331DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill(this.infosys202331DataSet.CarReportTable);
         }
     }
 }
