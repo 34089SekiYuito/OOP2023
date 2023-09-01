@@ -88,7 +88,6 @@ namespace CalendarApp {
             clearScreen();
         }
 
-
         //修正ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
             statasLabelDisp();  //表示クリア
