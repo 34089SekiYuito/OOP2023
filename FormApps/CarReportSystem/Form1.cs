@@ -19,7 +19,7 @@ namespace CalendarApp {
         //private int mode; //画像変更用
 
         //設定情報
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
 
         public Form1() {
             InitializeComponent();
