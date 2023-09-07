@@ -30,13 +30,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(string v) {
-            //シリアル化
             var employee = new Employee {
                 Id = 1000,
                 Name = "関　唯斗",
                 HireDate = new DateTime(2003, 10, 21),
             };
 
+            //シリアル化
             using (var write = XmlWriter.Create(v)) {
                 var serializer = new XmlSerializer(employee.GetType());
                 serializer.Serialize(write, employee);

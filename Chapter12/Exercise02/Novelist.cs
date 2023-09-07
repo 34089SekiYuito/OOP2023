@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Exercise02 {
 
     [XmlRoot("novelist")]
-    [DataContract(Name = "novelist")]
+    [DataContract]
     public class Novelist {
         [XmlElement(ElementName = "name")]
         [DataMember(Name ="name")]
