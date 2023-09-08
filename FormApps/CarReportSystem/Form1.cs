@@ -62,10 +62,17 @@ namespace CalendarApp {
                 return;
             }
 
-            ////追加処理
-            //dgvCarReports.Columns.Add(
-            //    );
-
+            //テーブルの行を1行作成
+            DataRow newRow = infosys202331DataSet.CarReportTable.NewRow();
+            newRow[1] = dtpDate.Value.Date;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray(pbCarImage.Image);
+            //追加・更新処理
+            infosys202331DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202331DataSet.CarReportTable);
 
             //var car = new CarReport {
             //    Date = dtpDate.Value.Date,
@@ -87,10 +94,10 @@ namespace CalendarApp {
 
         //削除ボタンのイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            int delete = dgvCarReports.CurrentRow.Index;
-            dgvCarReports.Rows.RemoveAt(delete);
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
             //各項目のクリア処理
             clearScreen();
+            this.carReportTableTableAdapter.Update(infosys202331DataSet.CarReportTable);
         }
 
         //修正ボタンイベントハンドラ
