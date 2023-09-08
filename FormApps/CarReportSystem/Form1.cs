@@ -27,7 +27,7 @@ namespace CalendarApp {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             buttonDisable();
             statasLabelDisp();  //表示クリア
             tsTime.Text = DateTime.Now.ToString("yyyy年MM月dd日(dddd) HH時mm分ss秒");
@@ -62,16 +62,20 @@ namespace CalendarApp {
                 return;
             }
 
-            //追加処理
-            var car = new CarReport {
-                Date = dtpDate.Value.Date,
-                Author = cbAuthor.Text,
-                Maker = getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image
-            };
-            CarReports.Add(car);
+            ////追加処理
+            //dgvCarReports.Columns.Add(
+            //    );
+
+
+            //var car = new CarReport {
+            //    Date = dtpDate.Value.Date,
+            //    Author = cbAuthor.Text,
+            //    Maker = (CarReport.MakerGroup)getSelectedMaker(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage = pbCarImage.Image
+            //};
+            //CarReports.Add(car);
 
             //コンボボックスに登録
             setCbAuthor(cbAuthor.Text);
@@ -85,6 +89,7 @@ namespace CalendarApp {
         private void btDeleteReport_Click(object sender, EventArgs e) {
             int delete = dgvCarReports.CurrentRow.Index;
             dgvCarReports.Rows.RemoveAt(delete);
+            //各項目のクリア処理
             clearScreen();
         }
 
@@ -99,16 +104,29 @@ namespace CalendarApp {
                 statasLabelDisp("車名が入力されていません");
                 return;
             }
-            int select = dgvCarReports.CurrentRow.Index;
-            CarReports[select] = new CarReport {
-                Date = dtpDate.Value.Date,
-                Author = cbAuthor.Text,
-                Maker = getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image
-            };
 
+            dgvCarReports.CurrentRow.Cells[1].Value = dtpDate.Value;
+            dgvCarReports.CurrentRow.Cells[2].Value = cbAuthor.Text;
+            dgvCarReports.CurrentRow.Cells[3].Value = getSelectedMaker();
+            dgvCarReports.CurrentRow.Cells[4].Value = cbCarName.Text;
+            dgvCarReports.CurrentRow.Cells[5].Value = tbReport.Text;
+            dgvCarReports.CurrentRow.Cells[6].Value = pbCarImage.Image;
+
+            this.Validate();
+            this.carReportTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202331DataSet);
+
+            //int select = dgvCarReports.CurrentRow.Index;
+            //    new CarReport {
+            //    Date = dtpDate.Value.Date,
+            //    Author = cbAuthor.Text,
+            //    Maker = getSelectedMaker(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage = pbCarImage.Image
+            //};
+
+            //各項目のクリア処理
             clearScreen();
         }
 
@@ -198,9 +216,9 @@ namespace CalendarApp {
         }
 
         //指定したメーカーのラジオボタンをセット
-        private void checkMaker(CarReport.MakerGroup maker) {
+        private void checkMaker(string maker) {
             foreach (RadioButton item in gbMaker.Controls) {
-                if (int.Parse(item.Tag.ToString()) == (int)maker) {
+                if (item.Text.Equals(maker)) {
                     item.Checked = true;
                     break;
                 }
@@ -278,7 +296,7 @@ namespace CalendarApp {
                 setCbCarName(item.CarName);
             }
             clearScreen();
-            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
         }
 
         //cbAuthorに登録
@@ -293,14 +311,17 @@ namespace CalendarApp {
                 cbCarName.Items.Add(carName);
         }
 
+        //レコードの選択時
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
             if (dgvCarReports.CurrentCell != null) {
-                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-                checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[1].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[2].Value.ToString();
+                checkMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+                    ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
+
                 //ボタン有効化
                 buttonEnabled();
             }
@@ -318,5 +339,20 @@ namespace CalendarApp {
             // TODO: このコード行はデータを 'infosys202331DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202331DataSet.CarReportTable);
         }
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] b) {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(b);
+            return img;
+        }
+
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img) {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
+        }
+
     }
 }
