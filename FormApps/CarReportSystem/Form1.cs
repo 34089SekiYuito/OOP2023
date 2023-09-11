@@ -346,9 +346,9 @@ namespace CalendarApp {
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202331DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202331DataSet.CarReportTable);
-            foreach (var item in carReportTableTableAdapter.GetData()) {
-                setCbAuthor(item.Field<string>("Author"));
-                setCbCarName(item.Field<string>("CarName"));
+            foreach (var item in infosys202331DataSet.CarReportTable) {
+                setCbAuthor(item.Author);
+                setCbCarName(item.CarName);
             }
         }
 
