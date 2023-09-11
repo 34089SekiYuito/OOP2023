@@ -283,6 +283,17 @@ namespace CalendarApp {
             return b;
         }
 
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202331DataSet.CarReportTable, tbAuthorSearch.Text);
+        }
 
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202331DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate(this.infosys202331DataSet.CarReportTable, dtpStartDate.Value.ToString(),dtpEndDate.Value.ToString());
+
+        }
     }
 }
