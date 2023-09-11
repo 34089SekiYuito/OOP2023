@@ -14,16 +14,11 @@ using System.Xml.Serialization;
 
 namespace CalendarApp {
     public partial class Form1 : Form {
-        //管理用データ
-        BindingList<CarReport> CarReports = new BindingList<CarReport>();
-        //private int mode; //画像変更用
-
         //設定情報
         Settings settings = Settings.getInstance();
 
         public Form1() {
             InitializeComponent();
-            //dgvCarReports.DataSource = CarReports;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -74,16 +69,6 @@ namespace CalendarApp {
             infosys202331DataSet.CarReportTable.Rows.Add(newRow);
             this.carReportTableTableAdapter.Update(infosys202331DataSet.CarReportTable);
 
-            //var car = new CarReport {
-            //    Date = dtpDate.Value.Date,
-            //    Author = cbAuthor.Text,
-            //    Maker = (CarReport.MakerGroup)getSelectedMaker(),
-            //    CarName = cbCarName.Text,
-            //    Report = tbReport.Text,
-            //    CarImage = pbCarImage.Image
-            //};
-            //CarReports.Add(car);
-
             //コンボボックスに登録
             setCbAuthor(cbAuthor.Text);
             setCbCarName(cbCarName.Text);
@@ -123,32 +108,8 @@ namespace CalendarApp {
             this.carReportTableBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202331DataSet);
 
-            //int select = dgvCarReports.CurrentRow.Index;
-            //    new CarReport {
-            //    Date = dtpDate.Value.Date,
-            //    Author = cbAuthor.Text,
-            //    Maker = getSelectedMaker(),
-            //    CarName = cbCarName.Text,
-            //    Report = tbReport.Text,
-            //    CarImage = pbCarImage.Image
-            //};
-
             //各項目のクリア処理
             clearScreen();
-        }
-
-        //レコードの選択時
-        private void dgvCarReports_Click(object sender, EventArgs e) {
-            //if (dgvCarReports.CurrentCell != null) {
-            //    dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-            //    cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-            //    checkMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-            //    cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-            //    tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-            //    pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
-            //    //ボタン有効化
-            //    buttonEnabled();
-            //}
         }
 
         //ファイルの開くボタンのイベントハンドラ
@@ -263,49 +224,6 @@ namespace CalendarApp {
             }
         }
 
-        //ファイルを保存
-        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
-                try {
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, CarReports);
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        //ファイルを開く
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                    }
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
-            }
-
-            dgvCarReports.DataSource = null;    //dgvを初期化
-            dgvCarReports.DataSource = CarReports;
-            dgvCarReports.ClearSelection(); //dgvの選択解除
-            dgvCarReports.CurrentCell = null;   //dgvの選択解除
-            cbAuthor.Items.Clear(); //cbAuthorの初期化
-            cbCarName.Items.Clear();    //cbCarNameの初期化
-            //コンボボックスに登録
-            foreach (var item in CarReports) {
-                setCbAuthor(item.Author);
-                setCbCarName(item.CarName);
-            }
-            clearScreen();
-            dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
-        }
-
         //cbAuthorに登録
         private void setCbAuthor(string author) {
             if (!cbAuthor.Items.Contains(author))
@@ -329,7 +247,6 @@ namespace CalendarApp {
                 pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
                                         && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
                                     ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
-
                 //ボタン有効化
                 buttonEnabled();
             }
@@ -342,8 +259,8 @@ namespace CalendarApp {
 
         }
 
-        //接続ボタンイベントハンドラ
-        private void btConnection_Click(object sender, EventArgs e) {
+        //接続イベントハンドラ
+        private void 接続NToolStripMenuItem_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202331DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202331DataSet.CarReportTable);
             foreach (var item in infosys202331DataSet.CarReportTable) {
@@ -365,6 +282,7 @@ namespace CalendarApp {
             byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
             return b;
         }
+
 
     }
 }
