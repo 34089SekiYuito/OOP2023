@@ -326,8 +326,9 @@ namespace CalendarApp {
                 checkMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
-                    ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
+                                        && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
+                                    ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
 
                 //ボタン有効化
                 buttonEnabled();
@@ -345,6 +346,10 @@ namespace CalendarApp {
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202331DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202331DataSet.CarReportTable);
+            foreach (var item in carReportTableTableAdapter.GetData()) {
+                setCbAuthor(item.Field<string>("Author"));
+                setCbCarName(item.Field<string>("CarName"));
+            }
         }
 
         // バイト配列をImageオブジェクトに変換
