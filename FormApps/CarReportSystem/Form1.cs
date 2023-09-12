@@ -22,6 +22,7 @@ namespace CalendarApp {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            dgvCarReports.Columns[0].Visible = false;   //ID項目非表示
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             buttonDisable();
             statasLabelDisp();  //表示クリア
@@ -43,6 +44,7 @@ namespace CalendarApp {
                 MessageBox.Show(ex.Message);
                 BackColor = DefaultBackColor;
             }
+            接続NToolStripMenuItem_Click(sender, e);
         }
 
         //追加ボタンがクリックされた時のイベントハンドラ
@@ -267,6 +269,7 @@ namespace CalendarApp {
                 setCbAuthor(item.Author);
                 setCbCarName(item.CarName);
             }
+            clearScreen();
         }
 
         // バイト配列をImageオブジェクトに変換
@@ -285,15 +288,22 @@ namespace CalendarApp {
 
         private void btAuthorSearch_Click(object sender, EventArgs e) {
             carReportTableTableAdapter.FillByAuthor(this.infosys202331DataSet.CarReportTable, tbAuthorSearch.Text);
+            clearScreen();
         }
 
         private void btCarNameSearch_Click(object sender, EventArgs e) {
             carReportTableTableAdapter.FillByCarName(this.infosys202331DataSet.CarReportTable, tbCarNameSearch.Text);
+            clearScreen();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate(this.infosys202331DataSet.CarReportTable, dtpStartDate.Value.ToString(),dtpEndDate.Value.ToString());
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate(this.infosys202331DataSet.CarReportTable, dtpStartDate.Value.ToString(), dtpEndDate.Value.ToString());
+            clearScreen();
+        }
 
+        private void btReset_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.Fill(this.infosys202331DataSet.CarReportTable);
+            clearScreen();
         }
     }
 }
