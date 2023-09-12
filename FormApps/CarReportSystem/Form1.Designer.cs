@@ -473,7 +473,7 @@ namespace CalendarApp {
             this.ヘルプHToolStripMenuItem});
             this.menuItems.Location = new System.Drawing.Point(0, 0);
             this.menuItems.Name = "menuItems";
-            this.menuItems.Size = new System.Drawing.Size(1151, 24);
+            this.menuItems.Size = new System.Drawing.Size(1083, 24);
             this.menuItems.TabIndex = 10;
             this.menuItems.Text = "menuStrip1";
             // 
@@ -557,9 +557,9 @@ namespace CalendarApp {
             this.statusDisp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsTime,
             this.tsInfoText});
-            this.statusDisp.Location = new System.Drawing.Point(0, 570);
+            this.statusDisp.Location = new System.Drawing.Point(0, 571);
             this.statusDisp.Name = "statusDisp";
-            this.statusDisp.Size = new System.Drawing.Size(1151, 22);
+            this.statusDisp.Size = new System.Drawing.Size(1083, 22);
             this.statusDisp.SizingGrip = false;
             this.statusDisp.TabIndex = 11;
             this.statusDisp.Text = "statusStrip1";
@@ -739,7 +739,7 @@ namespace CalendarApp {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(1151, 592);
+            this.ClientSize = new System.Drawing.Size(1083, 593);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btScaleChange);
             this.Controls.Add(this.statusDisp);
