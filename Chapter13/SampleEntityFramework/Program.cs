@@ -41,6 +41,7 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_1() {
             using (var db = new BooksDbContext()) {
+                //著者の追加
                 var author1 = new Author {
                     Birthday = new DateTime(1888, 12, 26),
                     Gender = "M",
@@ -55,7 +56,7 @@ namespace SampleEntityFramework {
                 };
                 db.Authors.Add(author2);
 
-
+                //ほんの追加
                 var book1 = new Book {
                     Title = "こころ",
                     PublishedYear = 1991,
@@ -89,13 +90,13 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_2() {
             foreach (var book in GetBooks()) {
-                Console.WriteLine($"{book.Id} {book.Title} {book.PublishedYear} {book.Author.Name}");
+                Console.WriteLine($"{book.Title} {book.Author.Name}({book.PublishedYear})");
             }
         }
 
         private static void Exercise1_3() {
-            var MaxBook = GetBooks().Where(b => b.Title.Length == GetBooks().Max(x => x.Title.Length));
-            foreach (var book in MaxBook) {
+            var maxBook = GetBooks().Where(b => b.Title.Length == GetBooks().Max(x => x.Title.Length));
+            foreach (var book in maxBook) {
                 Console.WriteLine(book.Title);
             }
         }
@@ -112,7 +113,7 @@ namespace SampleEntityFramework {
             foreach (var author in sort) {
                 Console.WriteLine(author.Key.Name);
                 foreach (var book in author) {
-                    Console.Write($"{book.Title} {book.PublishedYear} ");
+                    Console.Write($"{book.Title}({book.PublishedYear}) ");
                 }
                 Console.Write("\n\n");  //改行
             }
