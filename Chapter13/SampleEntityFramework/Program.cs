@@ -109,7 +109,7 @@ namespace SampleEntityFramework {
         }
 
         private static void Exercise1_5() {
-            var sort = GetBooks().GroupBy(b => b.Author).OrderBy(b => b.Key.Birthday).ThenBy(b => b.Key.Name);
+            var sort = GetBooks().GroupBy(b => b.Author).OrderByDescending(b => b.Key.Birthday).ThenBy(b => b.Key.Name);
             foreach (var author in sort) {
                 Console.WriteLine(author.Key.Name);
                 foreach (var book in author) {
