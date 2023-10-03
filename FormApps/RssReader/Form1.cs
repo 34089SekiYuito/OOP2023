@@ -18,15 +18,15 @@ namespace RssReader {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear();
+            nodes = null;
             using (var wc = new WebClient()) {
                 var url = wc.OpenRead(tbUrl.Text);
                 XDocument xdoc = XDocument.Load(url);
-
                 nodes = xdoc.Root.Descendants("item").Select(x => new itemData {
-                                                                Title = x.Element("title").Value ,
-                                                                Link = x.Element("link").Value
-                                                                }).ToList();
-                lbRssTitle.Items.Clear();
+                    Title = x.Element("title").Value,
+                    Link = x.Element("link").Value
+                }).ToList();
                 foreach (var node in nodes) {
                     lbRssTitle.Items.Add(node.Title);
                 }
@@ -34,7 +34,7 @@ namespace RssReader {
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
-            wbBrowser.Url =  new Uri(nodes[lbRssTitle.SelectedIndex].Link);
+            wbBrowser.Url = new Uri(nodes[lbRssTitle.SelectedIndex].Link);
         }
     }
 }
