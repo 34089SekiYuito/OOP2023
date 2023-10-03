@@ -34,7 +34,9 @@ namespace RssReader {
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
-            wbBrowser.Url = new Uri(nodes[lbRssTitle.SelectedIndex].Link);
+            if (lbRssTitle.SelectedIndex == -1)
+                return;
+            wbBrowser.Navigate(nodes[lbRssTitle.SelectedIndex].Link);
         }
     }
 }
