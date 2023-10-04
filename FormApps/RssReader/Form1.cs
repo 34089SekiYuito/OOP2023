@@ -17,11 +17,27 @@ namespace RssReader {
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e) {
+            //using (var wc = new WebClient()) {
+            //    wc.Encoding = Encoding.UTF8;
+            //    var url = wc.OpenRead(@"https://news.yahoo.co.jp/rss");
+            //    XDocument xdoc = XDocument.Load(url);
+            //    var topics = xdoc.Descendants("li").Descendants("a");
+            //    foreach (var topic in topics) {
+            //        if (topic.FirstAttribute.Value.Contains(".xml")
+            //            && !cbCategory.Items.Contains(topic.Value)) {
+            //            cbCategory.Items.Add(topic.Value);
+            //        }
+            //    }
+            //}
+        }
+
         private void btGet_Click(object sender, EventArgs e) {
+            if (cbUrl.Text == "") return;
             lbRssTitle.Items.Clear();
             nodes = null;
             using (var wc = new WebClient()) {
-                var url = wc.OpenRead(tbUrl.Text);
+                var url = wc.OpenRead(cbUrl.Text);
                 XDocument xdoc = XDocument.Load(url);
                 nodes = xdoc.Root.Descendants("item").Select(x => new itemData {
                     Title = x.Element("title").Value,
@@ -34,9 +50,13 @@ namespace RssReader {
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
-            if (lbRssTitle.SelectedIndex == -1)
-                return;
+            if (lbRssTitle.SelectedIndex == -1) return;
             wbBrowser.Navigate(nodes[lbRssTitle.SelectedIndex].Link);
+        }
+
+        private void btRegister_Click(object sender, EventArgs e) {
+            if (cbUrl.Text == "") return;
+            
         }
     }
 }

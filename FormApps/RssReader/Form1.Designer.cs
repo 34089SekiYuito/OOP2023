@@ -24,20 +24,13 @@ namespace RssReader {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
-            this.tbUrl = new System.Windows.Forms.TextBox();
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
             this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.cbUrl = new System.Windows.Forms.ComboBox();
+            this.btRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // tbUrl
-            // 
-            this.tbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbUrl.Location = new System.Drawing.Point(12, 12);
-            this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(735, 31);
-            this.tbUrl.TabIndex = 0;
             // 
             // btGet
             // 
@@ -55,7 +48,7 @@ namespace RssReader {
             this.lbRssTitle.ItemHeight = 12;
             this.lbRssTitle.Location = new System.Drawing.Point(12, 59);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(824, 160);
+            this.lbRssTitle.Size = new System.Drawing.Size(913, 160);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
             // 
@@ -65,42 +58,62 @@ namespace RssReader {
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(824, 452);
+            this.wbBrowser.Size = new System.Drawing.Size(913, 452);
             this.wbBrowser.TabIndex = 3;
             this.wbBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
             // cbCategory
             // 
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(853, 245);
+            this.cbCategory.Location = new System.Drawing.Point(945, 128);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(159, 20);
+            this.cbCategory.Size = new System.Drawing.Size(79, 20);
             this.cbCategory.TabIndex = 4;
+            // 
+            // cbUrl
+            // 
+            this.cbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cbUrl.FormattingEnabled = true;
+            this.cbUrl.Location = new System.Drawing.Point(12, 12);
+            this.cbUrl.Name = "cbUrl";
+            this.cbUrl.Size = new System.Drawing.Size(735, 32);
+            this.cbUrl.TabIndex = 5;
+            // 
+            // btRegister
+            // 
+            this.btRegister.Location = new System.Drawing.Point(842, 12);
+            this.btRegister.Name = "btRegister";
+            this.btRegister.Size = new System.Drawing.Size(83, 31);
+            this.btRegister.TabIndex = 6;
+            this.btRegister.Text = "登録";
+            this.btRegister.UseVisualStyleBackColor = true;
+            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 699);
+            this.ClientSize = new System.Drawing.Size(1048, 699);
+            this.Controls.Add(this.btRegister);
+            this.Controls.Add(this.cbUrl);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
-            this.Controls.Add(this.tbUrl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbUrl;
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
         private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.ComboBox cbUrl;
+        private System.Windows.Forms.Button btRegister;
     }
 }
 
