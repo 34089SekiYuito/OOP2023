@@ -16,10 +16,11 @@ namespace Exercise03 {
             };
 
             foreach (var line in texts) {
-                var mc = Regex.Matches(line, @"");
+                var mc = Regex.Matches(line, @"\btime\b", RegexOptions.IgnoreCase);
+                foreach (Match match in mc) {
+                    Console.WriteLine("{0}: {1}", line, match.Index);
+                }
             }
-
-
         }
     }
 }
