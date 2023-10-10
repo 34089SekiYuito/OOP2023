@@ -10,7 +10,7 @@ namespace Exercise04 {
     class Program {
         static void Main(string[] args) {
             var lines = File.ReadAllLines("sample.txt");
-            var pattern = @"[Vv]ersion\s*=\s*""v4.0""";
+            var pattern = @"\b[Vv]ersion\s*=\s*""v4.0""";
             List<string> replaced = new List<string>();
             foreach (var line in lines) {
                 replaced.Add(Regex.Replace(line, pattern, "version=\"v5.0\""));
