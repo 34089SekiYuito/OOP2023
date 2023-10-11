@@ -27,7 +27,6 @@ namespace RssReader {
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.cbUrl = new System.Windows.Forms.ComboBox();
             this.btRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -62,14 +61,6 @@ namespace RssReader {
             this.wbBrowser.TabIndex = 3;
             this.wbBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
-            // cbCategory
-            // 
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(945, 128);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(79, 20);
-            this.cbCategory.TabIndex = 4;
-            // 
             // cbUrl
             // 
             this.cbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -93,10 +84,9 @@ namespace RssReader {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 699);
+            this.ClientSize = new System.Drawing.Size(943, 699);
             this.Controls.Add(this.btRegister);
             this.Controls.Add(this.cbUrl);
-            this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
@@ -111,7 +101,6 @@ namespace RssReader {
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
-        private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.ComboBox cbUrl;
         private System.Windows.Forms.Button btRegister;
     }

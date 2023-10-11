@@ -18,18 +18,7 @@ namespace RssReader {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            //using (var wc = new WebClient()) {
-            //    wc.Encoding = Encoding.UTF8;
-            //    var url = wc.OpenRead(@"https://news.yahoo.co.jp/rss");
-            //    XDocument xdoc = XDocument.Load(url);
-            //    var topics = xdoc.Descendants("li").Descendants("a");
-            //    foreach (var topic in topics) {
-            //        if (topic.FirstAttribute.Value.Contains(".xml")
-            //            && !cbCategory.Items.Contains(topic.Value)) {
-            //            cbCategory.Items.Add(topic.Value);
-            //        }
-            //    }
-            //}
+
         }
 
         private void btGet_Click(object sender, EventArgs e) {
@@ -56,7 +45,16 @@ namespace RssReader {
 
         private void btRegister_Click(object sender, EventArgs e) {
             if (cbUrl.Text == "") return;
-            
+            var input = new InputName();
+            string name = "";
+            if (input.ShowDialog() == DialogResult.OK) {
+            }
+
+            var item = new itemData {
+                Title = name,
+                Link = cbUrl.Text,
+            };
+            cbUrl.Items.Add(item.Title);
         }
     }
 }
