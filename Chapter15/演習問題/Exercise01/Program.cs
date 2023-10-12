@@ -115,10 +115,9 @@ namespace Exercise01 {
                 (c, b) => new {
                     Category = c.Name,
                     Count = b.Count()
-                });
+                }).Where(b => b.Count >= 4);
             foreach (var item in cat) {
-                if (item.Count >= 4)
-                    Console.WriteLine(item.Category);
+                Console.WriteLine(item.Category);
             }
         }
     }
