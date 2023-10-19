@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Exercise01 {
@@ -19,6 +20,10 @@ namespace Exercise01 {
                 line = line.Replace(item.Key, item.Value);
             }
             _lines.Add(line);
+
+            //解答例
+            //var s = Regex.Replace(line, "[０-９]", c => _dictionary[c.Value[0]].ToString());
+            //Console.WriteLine(s);
         }
 
         protected override void Terminate() {
