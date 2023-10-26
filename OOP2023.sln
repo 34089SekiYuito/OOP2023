@@ -197,6 +197,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayoutSample", "WPF\LayoutS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridLayoutSample", "WPF\GridLayoutSample\GridLayoutSample.csproj", "{3C9D5CA9-605F-46AA-A85F-98CE31A963AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSlider", "WPF\SampleSlider\SampleSlider.csproj", "{7B121082-29E2-458C-879B-C1ADFCE49F3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -709,6 +711,14 @@ Global
 		{3C9D5CA9-605F-46AA-A85F-98CE31A963AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C9D5CA9-605F-46AA-A85F-98CE31A963AB}.Release|x86.ActiveCfg = Release|Any CPU
 		{3C9D5CA9-605F-46AA-A85F-98CE31A963AB}.Release|x86.Build.0 = Release|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Debug|x86.Build.0 = Debug|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -794,6 +804,7 @@ Global
 		{26EF962C-E3B1-4692-853C-9284504437F3} = {9DBDE162-9AC9-4B23-91CD-A2351A0B5169}
 		{F13C62CF-B298-42FC-8D1A-14F45E669316} = {9DBDE162-9AC9-4B23-91CD-A2351A0B5169}
 		{3C9D5CA9-605F-46AA-A85F-98CE31A963AB} = {9DBDE162-9AC9-4B23-91CD-A2351A0B5169}
+		{7B121082-29E2-458C-879B-C1ADFCE49F3F} = {9DBDE162-9AC9-4B23-91CD-A2351A0B5169}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8B064F7-E636-40B8-BF3D-BB215C3C0503}
