@@ -25,17 +25,11 @@ namespace ColorChecker {
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            var r = (byte)rSlider.Value;
-            var g = (byte)gSlider.Value;
-            var b = (byte)bSlider.Value;
-            colorArea.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
+            colorArea.Background = new SolidColorBrush(Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value));
         }
 
         private void StockButton_Click(object sender, RoutedEventArgs e) {
-            var R = (byte)rSlider.Value;
-            var G = (byte)gSlider.Value;
-            var B = (byte)bSlider.Value;
-            var color = Color.FromRgb(R, G, B);
+            var color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
             var name = GetColorList().FirstOrDefault(c => c.Color == color)?.Name;
             ColorList.Items.Add(
                 new MyColor {
