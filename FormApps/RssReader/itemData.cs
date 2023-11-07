@@ -8,5 +8,11 @@ namespace RssReader {
     public class itemData {
         public string Title { get; set; }
         public string Link { get; set; }
+
+        public override string ToString() {
+            return Title;
+        }
     }
+
+    
 }

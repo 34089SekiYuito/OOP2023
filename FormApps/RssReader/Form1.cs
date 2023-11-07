@@ -13,20 +13,27 @@ using System.Xml.Linq;
 namespace RssReader {
     public partial class Form1 : Form {
         List<itemData> nodes;
+        List<string> topics = new List<string> {
+            @"https://news.yahoo.co.jp/rss/topics/top-picks.xml",
+            @"https://news.yahoo.co.jp/rss/topics/domestic.xml",
+            @"https://news.yahoo.co.jp/rss/topics/world.xml",
+            @"https://news.yahoo.co.jp/rss/topics/business.xml",
+            @"https://news.yahoo.co.jp/rss/topics/entertainment.xml",
+            @"https://news.yahoo.co.jp/rss/topics/sports.xml",
+            @"https://news.yahoo.co.jp/rss/topics/it.xml",
+            @"https://news.yahoo.co.jp/rss/topics/science.xml",
+            @"https://news.yahoo.co.jp/rss/topics/science.xml",
+        };
         public Form1() {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-
-        }
-
         private void btGet_Click(object sender, EventArgs e) {
-            if (cbUrl.Text == "") return;
+            if (tbLink.Text == "") return;
             lbRssTitle.Items.Clear();
             nodes = null;
             using (var wc = new WebClient()) {
-                var url = wc.OpenRead(cbUrl.Text);
+                var url = wc.OpenRead(tbLink.Text);
                 XDocument xdoc = XDocument.Load(url);
                 nodes = xdoc.Root.Descendants("item").Select(x => new itemData {
                     Title = x.Element("title").Value,
@@ -44,17 +51,31 @@ namespace RssReader {
         }
 
         private void btRegister_Click(object sender, EventArgs e) {
-            if (cbUrl.Text == "") return;
-            var input = new InputName();
-            string name = "";
-            if (input.ShowDialog() == DialogResult.OK) {
-            }
+            if (tbLink.Text == "") return;
+            if (tbRegister.Text == "") return;
 
             var item = new itemData {
-                Title = name,
-                Link = cbUrl.Text,
+                Title = tbRegister.Text,
+                Link = tbLink.Text,
             };
-            cbUrl.Items.Add(item.Title);
+            if (!cbUrl.Items.Contains(item.Title)) {
+                cbUrl.Items.Add(item);
+            }
+            tbRegister.Text = "";
+            tbLink.Text = "";
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e) {
+            foreach (RadioButton item in gbTopics.Controls) {
+                if (item.Checked)
+                    tbLink.Text = topics[int.Parse(item.Tag.ToString())];
+            }
+        }
+
+        private void cbUrl_SelectionChangeCommitted(object sender, EventArgs e) {
+            var item = (itemData)((ComboBox)sender).SelectedItem;
+            if (item == null) return;
+            tbLink.Text = item.Link;
         }
     }
 }
