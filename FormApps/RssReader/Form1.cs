@@ -54,28 +54,39 @@ namespace RssReader {
             if (tbLink.Text == "") return;
             if (tbRegister.Text == "") return;
 
-            var item = new itemData {
+            var data = new itemData {
                 Title = tbRegister.Text,
                 Link = tbLink.Text,
             };
-            if (!cbUrl.Items.Contains(item.Title)) {
-                cbUrl.Items.Add(item);
-            }
+
+            if (itemsContains(data)) cbUrl.Items.Add(data);
+
             tbRegister.Text = "";
             tbLink.Text = "";
         }
+
+        
 
         private void rb_CheckedChanged(object sender, EventArgs e) {
             foreach (RadioButton item in gbTopics.Controls) {
                 if (item.Checked)
                     tbLink.Text = topics[int.Parse(item.Tag.ToString())];
             }
+            cbUrl.SelectedIndex = -1;
         }
 
         private void cbUrl_SelectionChangeCommitted(object sender, EventArgs e) {
             var item = (itemData)((ComboBox)sender).SelectedItem;
             if (item == null) return;
             tbLink.Text = item.Link;
+        }
+
+        private bool itemsContains(itemData data) {
+            foreach (itemData item in cbUrl.Items) {
+                if (item.Title.Contains(data.Title) || item.Link.Contains(data.Link))
+                    return false;
+            }
+            return true;
         }
     }
 }

@@ -76,9 +76,10 @@ namespace RssReader {
             // 
             // cbUrl
             // 
+            this.cbUrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbUrl.FormattingEnabled = true;
-            this.cbUrl.Location = new System.Drawing.Point(12, 53);
+            this.cbUrl.Location = new System.Drawing.Point(12, 54);
             this.cbUrl.Name = "cbUrl";
             this.cbUrl.Size = new System.Drawing.Size(505, 32);
             this.cbUrl.TabIndex = 5;
