@@ -24,6 +24,5 @@ namespace SampleUnitConverter {
         public double FromImperialUnit(ImperialUnit unit ,double value) {
             return (value * unit.Coefficient) * 25.4 / this.Coefficient;
         }
-
     }
 }
