@@ -14,15 +14,15 @@ namespace RssReader {
     public partial class Form1 : Form {
         List<itemData> nodes;
         List<string> topics = new List<string> {
-            @"https://news.yahoo.co.jp/rss/topics/top-picks.xml",
-            @"https://news.yahoo.co.jp/rss/topics/domestic.xml",
-            @"https://news.yahoo.co.jp/rss/topics/world.xml",
-            @"https://news.yahoo.co.jp/rss/topics/business.xml",
-            @"https://news.yahoo.co.jp/rss/topics/entertainment.xml",
-            @"https://news.yahoo.co.jp/rss/topics/sports.xml",
-            @"https://news.yahoo.co.jp/rss/topics/it.xml",
-            @"https://news.yahoo.co.jp/rss/topics/science.xml",
-            @"https://news.yahoo.co.jp/rss/topics/science.xml",
+            @"https://news.yahoo.co.jp/rss/categories/domestic.xml",
+            @"https://news.yahoo.co.jp/rss/categories/world.xml",
+            @"https://news.yahoo.co.jp/rss/categories/business.xml",
+            @"https://news.yahoo.co.jp/rss/categories/entertainment.xml",
+            @"https://news.yahoo.co.jp/rss/categories/sports.xml",
+            @"https://news.yahoo.co.jp/rss/categories/it.xml",
+            @"https://news.yahoo.co.jp/rss/categories/science.xml",
+            @"https://news.yahoo.co.jp/rss/categories/life.xml",
+            @"https://news.yahoo.co.jp/rss/categories/local.xml",
         };
         public Form1() {
             InitializeComponent();

@@ -56,11 +56,12 @@ namespace RssReader {
             // 
             // lbRssTitle
             // 
+            this.lbRssTitle.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbRssTitle.FormattingEnabled = true;
-            this.lbRssTitle.ItemHeight = 12;
+            this.lbRssTitle.ItemHeight = 16;
             this.lbRssTitle.Location = new System.Drawing.Point(12, 140);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(913, 124);
+            this.lbRssTitle.Size = new System.Drawing.Size(913, 116);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
             // 
@@ -129,12 +130,12 @@ namespace RssReader {
             // rb科学
             // 
             this.rb科学.AutoSize = true;
-            this.rb科学.Location = new System.Drawing.Point(741, 19);
+            this.rb科学.Location = new System.Drawing.Point(630, 18);
             this.rb科学.Name = "rb科学";
             this.rb科学.Size = new System.Drawing.Size(47, 16);
             this.rb科学.TabIndex = 7;
             this.rb科学.TabStop = true;
-            this.rb科学.Tag = "7";
+            this.rb科学.Tag = "6";
             this.rb科学.Text = "科学";
             this.rb科学.UseVisualStyleBackColor = true;
             this.rb科学.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -142,12 +143,12 @@ namespace RssReader {
             // rbIT
             // 
             this.rbIT.AutoSize = true;
-            this.rbIT.Location = new System.Drawing.Point(649, 19);
+            this.rbIT.Location = new System.Drawing.Point(529, 18);
             this.rbIT.Name = "rbIT";
             this.rbIT.Size = new System.Drawing.Size(33, 16);
             this.rbIT.TabIndex = 6;
             this.rbIT.TabStop = true;
-            this.rbIT.Tag = "6";
+            this.rbIT.Tag = "5";
             this.rbIT.Text = "IT";
             this.rbIT.UseVisualStyleBackColor = true;
             this.rbIT.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -155,12 +156,12 @@ namespace RssReader {
             // rbスポーツ
             // 
             this.rbスポーツ.AutoSize = true;
-            this.rbスポーツ.Location = new System.Drawing.Point(533, 19);
+            this.rbスポーツ.Location = new System.Drawing.Point(410, 18);
             this.rbスポーツ.Name = "rbスポーツ";
             this.rbスポーツ.Size = new System.Drawing.Size(61, 16);
             this.rbスポーツ.TabIndex = 5;
             this.rbスポーツ.TabStop = true;
-            this.rbスポーツ.Tag = "5";
+            this.rbスポーツ.Tag = "4";
             this.rbスポーツ.Text = "スポーツ";
             this.rbスポーツ.UseVisualStyleBackColor = true;
             this.rbスポーツ.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -168,12 +169,12 @@ namespace RssReader {
             // rbエンタメ
             // 
             this.rbエンタメ.AutoSize = true;
-            this.rbエンタメ.Location = new System.Drawing.Point(419, 19);
+            this.rbエンタメ.Location = new System.Drawing.Point(305, 18);
             this.rbエンタメ.Name = "rbエンタメ";
             this.rbエンタメ.Size = new System.Drawing.Size(57, 16);
             this.rbエンタメ.TabIndex = 4;
             this.rbエンタメ.TabStop = true;
-            this.rbエンタメ.Tag = "4";
+            this.rbエンタメ.Tag = "3";
             this.rbエンタメ.Text = "エンタメ";
             this.rbエンタメ.UseVisualStyleBackColor = true;
             this.rbエンタメ.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -181,12 +182,12 @@ namespace RssReader {
             // rb経済
             // 
             this.rb経済.AutoSize = true;
-            this.rb経済.Location = new System.Drawing.Point(310, 19);
+            this.rb経済.Location = new System.Drawing.Point(209, 18);
             this.rb経済.Name = "rb経済";
             this.rb経済.Size = new System.Drawing.Size(47, 16);
             this.rb経済.TabIndex = 3;
             this.rb経済.TabStop = true;
-            this.rb経済.Tag = "3";
+            this.rb経済.Tag = "2";
             this.rb経済.Text = "経済";
             this.rb経済.UseVisualStyleBackColor = true;
             this.rb経済.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -194,12 +195,12 @@ namespace RssReader {
             // rb国際
             // 
             this.rb国際.AutoSize = true;
-            this.rb国際.Location = new System.Drawing.Point(209, 19);
+            this.rb国際.Location = new System.Drawing.Point(104, 18);
             this.rb国際.Name = "rb国際";
             this.rb国際.Size = new System.Drawing.Size(47, 16);
             this.rb国際.TabIndex = 2;
             this.rb国際.TabStop = true;
-            this.rb国際.Tag = "2";
+            this.rb国際.Tag = "1";
             this.rb国際.Text = "国際";
             this.rb国際.UseVisualStyleBackColor = true;
             this.rb国際.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -207,12 +208,12 @@ namespace RssReader {
             // rb国内
             // 
             this.rb国内.AutoSize = true;
-            this.rb国内.Location = new System.Drawing.Point(100, 19);
+            this.rb国内.Location = new System.Drawing.Point(6, 18);
             this.rb国内.Name = "rb国内";
             this.rb国内.Size = new System.Drawing.Size(47, 16);
             this.rb国内.TabIndex = 1;
             this.rb国内.TabStop = true;
-            this.rb国内.Tag = "1";
+            this.rb国内.Tag = "0";
             this.rb国内.Text = "国内";
             this.rb国内.UseVisualStyleBackColor = true;
             this.rb国内.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
@@ -220,13 +221,13 @@ namespace RssReader {
             // rb主要
             // 
             this.rb主要.AutoSize = true;
-            this.rb主要.Location = new System.Drawing.Point(6, 19);
+            this.rb主要.Location = new System.Drawing.Point(742, 19);
             this.rb主要.Name = "rb主要";
-            this.rb主要.Size = new System.Drawing.Size(47, 16);
+            this.rb主要.Size = new System.Drawing.Size(48, 16);
             this.rb主要.TabIndex = 0;
             this.rb主要.TabStop = true;
-            this.rb主要.Tag = "0";
-            this.rb主要.Text = "主要";
+            this.rb主要.Tag = "7";
+            this.rb主要.Text = "ライフ";
             this.rb主要.UseVisualStyleBackColor = true;
             this.rb主要.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
