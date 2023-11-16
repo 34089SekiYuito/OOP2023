@@ -24,6 +24,7 @@ namespace RssReader {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
@@ -41,12 +42,13 @@ namespace RssReader {
             this.rb主要 = new System.Windows.Forms.RadioButton();
             this.tbRegister = new System.Windows.Forms.TextBox();
             this.tbLink = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.gbTopics.SuspendLayout();
             this.SuspendLayout();
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(842, 12);
+            this.btGet.Location = new System.Drawing.Point(842, 17);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(83, 31);
             this.btGet.TabIndex = 1;
@@ -59,7 +61,7 @@ namespace RssReader {
             this.lbRssTitle.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 16;
-            this.lbRssTitle.Location = new System.Drawing.Point(12, 140);
+            this.lbRssTitle.Location = new System.Drawing.Point(14, 146);
             this.lbRssTitle.Name = "lbRssTitle";
             this.lbRssTitle.Size = new System.Drawing.Size(913, 116);
             this.lbRssTitle.TabIndex = 2;
@@ -67,7 +69,7 @@ namespace RssReader {
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(12, 280);
+            this.wbBrowser.Location = new System.Drawing.Point(12, 268);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
@@ -80,7 +82,7 @@ namespace RssReader {
             this.cbUrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbUrl.FormattingEnabled = true;
-            this.cbUrl.Location = new System.Drawing.Point(12, 54);
+            this.cbUrl.Location = new System.Drawing.Point(14, 54);
             this.cbUrl.Name = "cbUrl";
             this.cbUrl.Size = new System.Drawing.Size(505, 32);
             this.cbUrl.TabIndex = 5;
@@ -107,7 +109,7 @@ namespace RssReader {
             this.gbTopics.Controls.Add(this.rb国際);
             this.gbTopics.Controls.Add(this.rb国内);
             this.gbTopics.Controls.Add(this.rb主要);
-            this.gbTopics.Location = new System.Drawing.Point(12, 86);
+            this.gbTopics.Location = new System.Drawing.Point(14, 92);
             this.gbTopics.Name = "gbTopics";
             this.gbTopics.Size = new System.Drawing.Size(913, 48);
             this.gbTopics.TabIndex = 7;
@@ -238,6 +240,7 @@ namespace RssReader {
             this.tbRegister.Name = "tbRegister";
             this.tbRegister.Size = new System.Drawing.Size(311, 31);
             this.tbRegister.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.tbRegister, "登録する名前");
             // 
             // tbLink
             // 
@@ -246,6 +249,13 @@ namespace RssReader {
             this.tbLink.Name = "tbLink";
             this.tbLink.Size = new System.Drawing.Size(824, 31);
             this.tbLink.TabIndex = 9;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 100;
+            this.toolTip1.AutoPopDelay = 10000;
+            this.toolTip1.InitialDelay = 100;
+            this.toolTip1.ReshowDelay = 20;
             // 
             // Form1
             // 
@@ -287,6 +297,7 @@ namespace RssReader {
         private System.Windows.Forms.RadioButton rb地域;
         private System.Windows.Forms.TextBox tbRegister;
         private System.Windows.Forms.TextBox tbLink;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

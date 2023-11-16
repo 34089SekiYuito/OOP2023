@@ -1,0 +1,9 @@
+https://news.yahoo.co.jp/rss/categories/local.xml
+https://news.yahoo.co.jp/rss/categories/domestic.xml
+https://news.yahoo.co.jp/rss/categories/world.xml
+https://news.yahoo.co.jp/rss/categories/business.xml
+https://news.yahoo.co.jp/rss/categories/entertainment.xml
+https://news.yahoo.co.jp/rss/categories/sports.xml
+https://news.yahoo.co.jp/rss/categories/it.xml
+https://news.yahoo.co.jp/rss/categories/science.xml
+https://news.yahoo.co.jp/rss/categories/life.xml

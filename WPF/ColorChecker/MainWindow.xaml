@@ -28,7 +28,7 @@
             <TextBlock x:Name="TextBlockR" Grid.Column="0" Grid.Row="0" Text="R" HorizontalAlignment="Right" FontSize="20" Margin="15,0,0,15" VerticalAlignment="Bottom"/>
             <TextBlock x:Name="TextBlockG" Grid.Column="0" Grid.Row="1" Text="G" HorizontalAlignment="Right" FontSize="20" Margin="15,0,0,15" VerticalAlignment="Bottom"/>
             <TextBlock x:Name="TextBlockB" Grid.Column="0" Grid.Row="2" Text="B" HorizontalAlignment="Right" FontSize="20" Margin="15,0,0,15" VerticalAlignment="Bottom"/>
-            <Slider x:Name="rSlider"  Grid.Column="1" Grid.Row="0" Maximum="255" Margin="5,40,5,0" TickPlacement="TopLeft" TickFrequency="50" SmallChange="1" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="rSlider"  Grid.Column="1" Grid.Row="0" Maximum="255" Margin="5,40,5,0" TickFrequency="50" SmallChange="1" ValueChanged="Slider_ValueChanged" TickPlacement="TopLeft"/>
             <Slider x:Name="gSlider"  Grid.Column="1" Grid.Row="1" Maximum="255" Margin="5,40,5,0" TickPlacement="TopLeft" TickFrequency="50" SmallChange="1" ValueChanged="Slider_ValueChanged"/>
             <Slider x:Name="bSlider"  Grid.Column="1" Grid.Row="2" Maximum="255" Margin="5,40,5,0" TickPlacement="TopLeft" TickFrequency="50" SmallChange="1" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="rValue" Grid.Column="2" Grid.Row="0" Text="{Binding ElementName=rSlider,Path=Value,Mode=TwoWay,StringFormat={}{0:0}}" Margin="3,40,3,3" FontSize="18"/>
