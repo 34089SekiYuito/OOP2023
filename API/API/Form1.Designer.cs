@@ -1,5 +1,5 @@
 ﻿
-namespace RssReader {
+namespace API {
     partial class Form1 {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -43,8 +43,6 @@ namespace RssReader {
             this.tbRegister = new System.Windows.Forms.TextBox();
             this.tbLink = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.gbTopics.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,9 +82,9 @@ namespace RssReader {
             this.cbUrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbUrl.FormattingEnabled = true;
-            this.cbUrl.Location = new System.Drawing.Point(150, 54);
+            this.cbUrl.Location = new System.Drawing.Point(14, 54);
             this.cbUrl.Name = "cbUrl";
-            this.cbUrl.Size = new System.Drawing.Size(369, 32);
+            this.cbUrl.Size = new System.Drawing.Size(505, 32);
             this.cbUrl.TabIndex = 5;
             this.cbUrl.SelectionChangeCommitted += new System.EventHandler(this.cbUrl_SelectionChangeCommitted);
             // 
@@ -212,7 +210,6 @@ namespace RssReader {
             // rb国内
             // 
             this.rb国内.AutoSize = true;
-            this.rb国内.Checked = true;
             this.rb国内.Location = new System.Drawing.Point(6, 18);
             this.rb国内.Name = "rb国内";
             this.rb国内.Size = new System.Drawing.Size(47, 16);
@@ -239,9 +236,9 @@ namespace RssReader {
             // tbRegister
             // 
             this.tbRegister.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbRegister.Location = new System.Drawing.Point(597, 54);
+            this.tbRegister.Location = new System.Drawing.Point(525, 54);
             this.tbRegister.Name = "tbRegister";
-            this.tbRegister.Size = new System.Drawing.Size(239, 31);
+            this.tbRegister.Size = new System.Drawing.Size(311, 31);
             this.tbRegister.TabIndex = 8;
             this.toolTip1.SetToolTip(this.tbRegister, "登録する名前");
             // 
@@ -260,33 +257,11 @@ namespace RssReader {
             this.toolTip1.InitialDelay = 100;
             this.toolTip1.ReshowDelay = 20;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(16, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 19);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "お気に入り一覧";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(525, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 19);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "登録名";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 699);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tbLink);
             this.Controls.Add(this.tbRegister);
             this.Controls.Add(this.gbTopics);
@@ -295,9 +270,8 @@ namespace RssReader {
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
-            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "RssReader";
+            this.Text = "Form1";
             this.gbTopics.ResumeLayout(false);
             this.gbTopics.PerformLayout();
             this.ResumeLayout(false);
@@ -324,8 +298,6 @@ namespace RssReader {
         private System.Windows.Forms.TextBox tbRegister;
         private System.Windows.Forms.TextBox tbLink;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }
 
