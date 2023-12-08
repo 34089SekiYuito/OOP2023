@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{A26473E1-2CCB-44F7-801D-56521E6BB34D}"
 EndProject
@@ -211,7 +211,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API\API.csproj",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET Core", "ASP.NET Core", "{F0D72B3B-D97A-4687-8FCE-E1C82E3E2202}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ASP.NET Core\ContosoUniversity\ContosoUniversity.csproj", "{6B724C43-6744-4D1B-ABFE-4808F9A44D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity", "ASP.NET Core\ContosoUniversity\ContosoUniversity.csproj", "{6B724C43-6744-4D1B-ABFE-4808F9A44D95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APItest", "API\APItest\APItest.csproj", "{75A59A3A-B9C3-44FE-9FF8-900F858E2111}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -773,6 +775,14 @@ Global
 		{6B724C43-6744-4D1B-ABFE-4808F9A44D95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B724C43-6744-4D1B-ABFE-4808F9A44D95}.Release|x86.ActiveCfg = Release|Any CPU
 		{6B724C43-6744-4D1B-ABFE-4808F9A44D95}.Release|x86.Build.0 = Release|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Debug|x86.Build.0 = Debug|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Release|x86.ActiveCfg = Release|Any CPU
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -864,6 +874,7 @@ Global
 		{26491472-0441-40E5-BD77-2B8ACC2A5586} = {9DBDE162-9AC9-4B23-91CD-A2351A0B5169}
 		{21C9A5AB-F5D5-48D2-BF96-A29D67979333} = {37DFB573-5BD3-4F5E-B522-2D137D797B03}
 		{6B724C43-6744-4D1B-ABFE-4808F9A44D95} = {F0D72B3B-D97A-4687-8FCE-E1C82E3E2202}
+		{75A59A3A-B9C3-44FE-9FF8-900F858E2111} = {37DFB573-5BD3-4F5E-B522-2D137D797B03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8B064F7-E636-40B8-BF3D-BB215C3C0503}
